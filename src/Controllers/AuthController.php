@@ -103,7 +103,7 @@ class AuthController {
         Session::set('user_name', $user['name']);
         Session::set('flash_success', 'Your account has been created successfully.');
 
-        header('Location: /');
+        header('Location: /account');
         exit;
     }
 
@@ -126,6 +126,8 @@ class AuthController {
         $role = Session::get('user_role');
         if ($role === 'admin') {
             header('Location: /admin');
+        } elseif ($role === 'student') {
+            header('Location: /account');
         } else {
             header('Location: /');
         }

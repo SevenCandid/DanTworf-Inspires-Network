@@ -57,6 +57,8 @@
                     <?php if ($isAuthenticated): ?>
                         <?php if ($isAdmin): ?>
                             <a href="/admin" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                        <?php else: ?>
+                            <a href="/account" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">My Account</a>
                         <?php endif; ?>
                         <form action="/logout" method="POST" class="inline">
                             <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
@@ -92,10 +94,12 @@
                 <a href="/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Us</a>
                 <a href="/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Donate</a>
                 <a href="/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact Us</a>
-                <?php if ($isAuthenticated): ?>
-                    <?php if ($isAdmin): ?>
-                        <a href="/admin" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
-                    <?php endif; ?>
+                    <?php if ($isAuthenticated): ?>
+                        <?php if ($isAdmin): ?>
+                            <a href="/admin" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                        <?php else: ?>
+                            <a href="/account" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">My Account</a>
+                        <?php endif; ?>
                     <form action="/logout" method="POST" class="border-transparent block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
                         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                         <button type="submit" class="text-left text-gray-500 hover:text-gray-700">Logout</button>
