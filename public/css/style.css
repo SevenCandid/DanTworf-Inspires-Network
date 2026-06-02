@@ -1,0 +1,23 @@
+/* Custom CSS for DIN */
+
+/* Any custom overrides or base styles not covered by Tailwind go here */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Ensure mobile menu doesn't break layout */
+#mobile-menu.hidden {
+    display: none;
+}
