@@ -13,7 +13,7 @@ class Config {
     public static function getDbPass(): string { return Env::get('DB_PASS', ''); }
 
     // Application Configuration
-    public static function getAppUrl(): string { return rtrim(Env::get('APP_URL', 'http://localhost/DIN/public'), '/'); }
+    public static function getAppUrl(): string { return rtrim(Env::get('APP_URL', 'http://localhost'), '/'); }
     public static function getAppName(): string { return Env::get('APP_NAME', 'DANTWORF INSPIRES NETWORK'); }
     public static function getAppEnv(): string { return Env::get('APP_ENV', 'development'); }
 

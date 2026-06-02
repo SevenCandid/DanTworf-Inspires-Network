@@ -49,9 +49,9 @@
         <nav class="mt-4 px-3 space-y-1">
             <?php
                 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-                $basePath = '/DIN/public';
+                $basePath = parse_url(\App\Config\Config::getAppUrl(), PHP_URL_PATH) ?: '';
                 $currentPath = str_replace($basePath, '', $currentUri) ?: '/admin';
-                
+
                 function isActive($path, $current) {
                     if ($path === '/admin' && $current === '/admin') return true;
                     if ($path !== '/admin' && str_starts_with($current, $path)) return true;

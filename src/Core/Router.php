@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Config\Config;
+
 class Router {
     private array $routes = [];
 
@@ -17,8 +19,8 @@ class Router {
         // Strip query string and base path if running in subdirectory
         $uri = parse_url($uri, PHP_URL_PATH);
         
-        // Remove base path if applicable, here assuming basic setup
-        $basePath = '/DIN/public'; // Adjust for your local setup if needed
+        // Remove the app's deployment path if it is served from a subdirectory.
+        $basePath = parse_url(Config::getAppUrl(), PHP_URL_PATH) ?: '';
         if (strpos($uri, $basePath) === 0) {
             $uri = substr($uri, strlen($basePath));
         }

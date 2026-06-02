@@ -46,7 +46,7 @@ class AdminResourceController extends AdminBaseController {
             if ($id) {
                 $item = Resource::getById($id);
                 if ($item) {
-                    $filepath = __DIR__ . '/../../public/' . $item['file_path'];
+                    $filepath = __DIR__ . '/../../' . $item['file_path'];
                     if (file_exists($filepath)) {
                         unlink($filepath);
                     }

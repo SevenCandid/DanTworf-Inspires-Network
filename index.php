@@ -3,7 +3,7 @@
 // Autoloader for App namespace
 spl_autoload_register(function ($class) {
     $prefix = 'App\\';
-    $base_dir = __DIR__ . '/../src/';
+    $base_dir = __DIR__ . '/src/';
     
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {
@@ -23,7 +23,7 @@ use App\Core\Env;
 use App\Config\Config;
 
 // Load Environment Variables
-Env::load(__DIR__ . '/../.env');
+Env::load(__DIR__ . '/.env');
 
 // Environment Specific Settings (Error Handling)
 if (Config::getAppEnv() === 'production') {
@@ -31,7 +31,7 @@ if (Config::getAppEnv() === 'production') {
     ini_set('display_startup_errors', '0');
     error_reporting(E_ALL);
     ini_set('log_errors', '1');
-    ini_set('error_log', __DIR__ . '/../logs/php-error.log');
+    ini_set('error_log', __DIR__ . '/logs/php-error.log');
 } else {
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');

@@ -55,7 +55,7 @@ class Upload {
         // Generate unique filename to prevent overwriting and path traversal
         $uniqueName = uniqid() . '_' . bin2hex(random_bytes(8)) . '.' . $extension;
         
-        $uploadDir = __DIR__ . '/../../public/uploads/';
+        $uploadDir = __DIR__ . '/../../uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0755, true);
         }
