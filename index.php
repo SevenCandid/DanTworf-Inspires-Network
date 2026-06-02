@@ -25,13 +25,59 @@ use App\Config\Config;
 // Load Environment Variables
 Env::load(__DIR__ . '/.env');
 
+// Capture fatal errors and uncaught exceptions in production logs.
+if (!is_dir(__DIR__ . '/logs')) {
+    @mkdir(__DIR__ . '/logs', 0755, true);
+}
+
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/logs/php-error.log');
+
+register_shutdown_function(static function (): void {
+    $error = error_get_last();
+    if (!$error) {
+        return;
+    }
+
+    $fatalTypes = [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR];
+    if (!in_array($error['type'], $fatalTypes, true)) {
+        return;
+    }
+
+    error_log(sprintf(
+        'FATAL [%s] %s in %s:%d',
+        $error['type'],
+        $error['message'] ?? 'Unknown error',
+        $error['file'] ?? 'unknown file',
+        $error['line'] ?? 0
+    ));
+});
+
+set_exception_handler(static function (Throwable $exception): void {
+    error_log(sprintf(
+        'UNCAUGHT [%s] %s in %s:%d',
+        get_class($exception),
+        $exception->getMessage(),
+        $exception->getFile(),
+        $exception->getLine()
+    ));
+
+    http_response_code(500);
+
+    if (Config::getAppEnv() !== 'production') {
+        echo '<pre>' . htmlspecialchars((string) $exception) . '</pre>';
+    } else {
+        echo 'Internal Server Error';
+    }
+
+    exit;
+});
+
 // Environment Specific Settings (Error Handling)
 if (Config::getAppEnv() === 'production') {
     ini_set('display_errors', '0');
     ini_set('display_startup_errors', '0');
     error_reporting(E_ALL);
-    ini_set('log_errors', '1');
-    ini_set('error_log', __DIR__ . '/logs/php-error.log');
 } else {
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
@@ -44,6 +90,49 @@ header("X-XSS-Protection: 1; mode=block");
 header("X-Content-Type-Options: nosniff");
 if (Config::getAppEnv() === 'production') {
     header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
+}
+
+// Temporary debug endpoint. Enable by setting DEBUG_TOKEN in .env and visiting /__debug?token=YOUR_TOKEN
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$debugToken = Env::get('DEBUG_TOKEN', '');
+if ($requestPath === '/__debug') {
+    $providedToken = $_GET['token'] ?? '';
+    if ($debugToken === '' || !hash_equals($debugToken, (string) $providedToken)) {
+        http_response_code(404);
+        echo 'Not Found';
+        exit;
+    }
+
+    header('Content-Type: application/json; charset=utf-8');
+    $dbStatus = ['ok' => false, 'error' => null];
+
+    try {
+        $connection = \App\Core\Database::getConnection();
+        $stmt = $connection->query('SELECT 1');
+        $dbStatus['ok'] = (bool) $stmt->fetchColumn();
+    } catch (Throwable $exception) {
+        $dbStatus['error'] = $exception->getMessage();
+    }
+
+    $logPath = __DIR__ . '/logs/php-error.log';
+    $logTail = '';
+    if (is_file($logPath)) {
+        $lines = @file($logPath, FILE_IGNORE_NEW_LINES);
+        if (is_array($lines)) {
+            $tail = array_slice($lines, -40);
+            $logTail = implode("\n", $tail);
+        }
+    }
+
+    echo json_encode([
+        'app_env' => Config::getAppEnv(),
+        'app_url' => Config::getAppUrl(),
+        'php_version' => PHP_VERSION,
+        'request_path' => $requestPath,
+        'db' => $dbStatus,
+        'last_error_log' => $logTail,
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    exit;
 }
 
 $router = new Router();
@@ -126,7 +215,7 @@ $router->get('/admin/subscribers', 'AdminDataController@subscribers');
 $router->get('/admin/subscribers/export', 'AdminDataController@exportSubscribers');
 
 // Dispatch request
-$uri = $_SERVER['REQUEST_URI'];
+$uri = $requestPath;
 $method = $_SERVER['REQUEST_METHOD'];
 
 $router->dispatch($uri, $method);
