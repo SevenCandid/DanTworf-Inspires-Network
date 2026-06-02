@@ -1,13 +1,9 @@
 <?php
 use App\Core\Session;
 
-$mode = $mode ?? 'login';
-$isRegister = $mode === 'register';
-$title = $isRegister ? 'Create Account' : 'Welcome Back';
-$subtitle = $isRegister
-    ? 'Create your member account to save your place in the DIN community.'
-    : 'Sign in to continue to your account or access the admin dashboard.';
-$action = $isRegister ? '/register' : '/login';
+$title = 'Admin Sign In';
+$subtitle = 'Use your admin credentials to manage the DIN site and content.';
+$action = '/login';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,19 +38,19 @@ $action = $isRegister ? '/register' : '/login';
         <div class="hidden lg:flex flex-col justify-between p-10 bg-gradient-to-br from-primary via-blue-900 to-slate-900">
             <div>
                 <p class="text-sm uppercase tracking-[0.35em] text-blue-200/80">DANTWORF INSPIRES NETWORK</p>
-                <h1 class="mt-6 text-3xl font-bold leading-tight">Support, opportunities, and community in one place.</h1>
+                <h1 class="mt-6 text-3xl font-bold leading-tight">Manage site content, opportunities, and community updates.</h1>
                 <p class="mt-4 text-blue-100/80 max-w-md">
-                    Join as a member to stay updated. Admins can still sign in here to manage content and community activity.
+                    This portal is reserved for site administrators and managers.
                 </p>
             </div>
             <div class="grid grid-cols-2 gap-4 text-sm">
                 <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-                    <p class="text-blue-100/70">Members</p>
-                    <p class="mt-1 font-semibold">Save opportunities</p>
+                    <p class="text-blue-100/70">Content</p>
+                    <p class="mt-1 font-semibold">Edit pages and posts</p>
                 </div>
                 <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-                    <p class="text-blue-100/70">Admins</p>
-                    <p class="mt-1 font-semibold">Manage the site</p>
+                    <p class="text-blue-100/70">Admin</p>
+                    <p class="mt-1 font-semibold">Manage the dashboard</p>
                 </div>
             </div>
         </div>
@@ -62,7 +58,7 @@ $action = $isRegister ? '/register' : '/login';
         <div class="p-6 sm:p-10 lg:p-12 bg-white text-slate-900">
             <div class="max-w-md mx-auto">
                 <div class="mb-8">
-                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">DIN Auth</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Admin Portal</p>
                     <h2 class="mt-3 text-2xl font-semibold"><?= htmlspecialchars($title) ?></h2>
                     <p class="mt-2 text-slate-600"><?= htmlspecialchars($subtitle) ?></p>
                 </div>
@@ -84,13 +80,6 @@ $action = $isRegister ? '/register' : '/login';
                 <form action="<?= $action ?>" method="POST" class="space-y-5">
                     <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
 
-                    <?php if ($isRegister): ?>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700">Full Name</label>
-                            <input type="text" name="name" required class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
-                        </div>
-                    <?php endif; ?>
-
                     <div>
                         <label class="block text-sm font-medium text-slate-700">Email Address</label>
                         <input type="email" name="email" required class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
@@ -101,25 +90,13 @@ $action = $isRegister ? '/register' : '/login';
                         <input type="password" name="password" required class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
                     </div>
 
-                    <?php if ($isRegister): ?>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700">Confirm Password</label>
-                            <input type="password" name="password_confirmation" required class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
-                        </div>
-                    <?php endif; ?>
-
                     <button type="submit" class="w-full rounded-xl bg-primary px-4 py-3 font-semibold text-white shadow-lg shadow-primary/20 hover:bg-blue-800 transition-colors">
-                        <?= $isRegister ? 'Create Account' : 'Sign In' ?>
+                        Sign In
                     </button>
                 </form>
 
                 <div class="mt-6 text-sm text-slate-600 flex flex-col gap-2">
-                    <?php if ($isRegister): ?>
-                        <span>Already have an account? <a href="/login" class="font-semibold text-primary hover:underline">Sign in</a></span>
-                    <?php else: ?>
-                        <span>New here? <a href="/register" class="font-semibold text-primary hover:underline">Create an account</a></span>
-                        <span class="text-slate-500">Admin access uses the same sign-in form with your admin credentials.</span>
-                    <?php endif; ?>
+                    <span class="text-slate-500">Admin access uses your site management credentials.</span>
                 </div>
             </div>
         </div>

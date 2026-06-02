@@ -146,7 +146,6 @@ $router->get('/success-stories', 'HomeController@successStories');
 $router->get('/events', 'HomeController@events');
 $router->get('/gallery', 'HomeController@gallery');
 $router->get('/resources', 'HomeController@resources');
-$router->get('/account', 'HomeController@account');
 $router->get('/join', 'HomeController@join');
 $router->post('/join', 'HomeController@submitJoin');
 $router->post('/volunteer', 'HomeController@submitVolunteer');
@@ -159,8 +158,6 @@ $router->post('/newsletter', 'HomeController@submitNewsletter');
 // Auth Routes
 $router->get('/login', 'AuthController@login');
 $router->post('/login', 'AuthController@authenticate');
-$router->get('/register', 'AuthController@register');
-$router->post('/register', 'AuthController@store');
 $router->post('/logout', 'AuthController@logout');
 
 // Admin Routes (Protected by controller constructors extending AdminBaseController)

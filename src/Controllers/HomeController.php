@@ -10,7 +10,6 @@ use App\Models\Member;
 use App\Models\Volunteer;
 use App\Models\Donation;
 use App\Models\Newsletter;
-use App\Models\User;
 
 class HomeController {
     public function index() {
@@ -45,22 +44,6 @@ class HomeController {
 
     public function resources() {
         require_once __DIR__ . '/../Views/resources.php';
-    }
-
-    public function account() {
-        Session::start();
-        if (!Session::has('user_id')) {
-            header('Location: /login');
-            exit;
-        }
-
-        if (Session::get('user_role') === 'admin') {
-            header('Location: /admin');
-            exit;
-        }
-
-        $user = User::findById((int) Session::get('user_id'));
-        require_once __DIR__ . '/../Views/account.php';
     }
 
     public function join() {
