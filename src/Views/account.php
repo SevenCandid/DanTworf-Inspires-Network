@@ -9,7 +9,7 @@
 <div class="bg-gradient-to-br from-primary via-blue-900 to-slate-950 text-white py-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs uppercase tracking-[0.35em] text-blue-200/80">Member Area</p>
-        <h1 class="mt-4 text-4xl md:text-5xl font-extrabold">Welcome, <?= htmlspecialchars($userName) ?></h1>
+        <h1 class="mt-4 text-3xl md:text-4xl font-bold">Welcome, <?= htmlspecialchars($userName) ?></h1>
         <p class="mt-4 max-w-2xl text-blue-100/80">
             Your account is active. You can stay updated with DIN opportunities, community news, and your member profile.
         </p>
@@ -19,7 +19,7 @@
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid gap-6 md:grid-cols-3">
         <div class="md:col-span-2 rounded-3xl bg-white shadow-xl border border-gray-100 p-8">
-            <h2 class="text-2xl font-bold text-gray-900">Account Overview</h2>
+            <h2 class="text-xl font-bold text-gray-900">Account Overview</h2>
             <div class="mt-6 grid gap-4 sm:grid-cols-2">
                 <div class="rounded-2xl bg-gray-50 p-4">
                     <p class="text-sm text-gray-500">Name</p>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="rounded-3xl bg-slate-900 text-white shadow-xl p-8">
-            <h2 class="text-xl font-bold">Quick Actions</h2>
+            <h2 class="text-lg font-semibold">Quick Actions</h2>
             <div class="mt-6 space-y-3">
                 <a href="/opportunities" class="block rounded-xl bg-white/10 px-4 py-3 hover:bg-white/15 transition-colors">Browse opportunities</a>
                 <a href="/events" class="block rounded-xl bg-white/10 px-4 py-3 hover:bg-white/15 transition-colors">See upcoming events</a>

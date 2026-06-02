@@ -42,7 +42,7 @@ $action = $isRegister ? '/register' : '/login';
         <div class="hidden lg:flex flex-col justify-between p-10 bg-gradient-to-br from-primary via-blue-900 to-slate-900">
             <div>
                 <p class="text-sm uppercase tracking-[0.35em] text-blue-200/80">DANTWORF INSPIRES NETWORK</p>
-                <h1 class="mt-6 text-4xl font-extrabold leading-tight">Support, opportunities, and community in one place.</h1>
+                <h1 class="mt-6 text-3xl font-bold leading-tight">Support, opportunities, and community in one place.</h1>
                 <p class="mt-4 text-blue-100/80 max-w-md">
                     Join as a member to stay updated. Admins can still sign in here to manage content and community activity.
                 </p>
@@ -63,7 +63,7 @@ $action = $isRegister ? '/register' : '/login';
             <div class="max-w-md mx-auto">
                 <div class="mb-8">
                     <p class="text-xs font-semibold uppercase tracking-[0.3em] text-primary">DIN Auth</p>
-                    <h2 class="mt-3 text-3xl font-bold"><?= htmlspecialchars($title) ?></h2>
+                    <h2 class="mt-3 text-2xl font-semibold"><?= htmlspecialchars($title) ?></h2>
                     <p class="mt-2 text-slate-600"><?= htmlspecialchars($subtitle) ?></p>
                 </div>
 

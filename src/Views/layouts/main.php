@@ -35,38 +35,36 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a href="/" class="text-2xl font-bold text-primary tracking-tight">DIN</a>
-                    </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 py-3">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="text-xl font-bold text-primary tracking-tight">DIN</a>
                 </div>
                 <!-- Desktop Nav -->
-                <div class="hidden xl:ml-6 xl:flex xl:space-x-4 xl:items-center">
-                    <a href="/" class="text-gray-900 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                    <a href="/about" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
-                    <a href="/programs" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Programs</a>
-                    <a href="/opportunities" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Opportunities</a>
-                    <a href="/success-stories" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Success Stories</a>
-                    <a href="/events" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Events & News</a>
-                    <a href="/gallery" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Gallery</a>
-                    <a href="/resources" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Resources</a>
-                    <a href="/join" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Join Us</a>
-                    <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Donate</a>
-                    <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Contact</a>
+                <div class="hidden xl:flex flex-1 min-w-0 flex-wrap items-center justify-end gap-x-1 gap-y-2">
+                    <a href="/" class="text-gray-900 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Home</a>
+                    <a href="/about" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">About Us</a>
+                    <a href="/programs" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Programs</a>
+                    <a href="/opportunities" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Opportunities</a>
+                    <a href="/success-stories" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Success Stories</a>
+                    <a href="/events" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Events & News</a>
+                    <a href="/gallery" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Gallery</a>
+                    <a href="/resources" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Resources</a>
+                    <a href="/join" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Join Us</a>
+                    <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-3 py-1.5 rounded-md text-[13px] font-medium shadow transition-colors">Donate</a>
+                    <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-3 py-1.5 rounded-md text-[13px] font-medium shadow transition-colors">Contact</a>
                     <?php if ($isAuthenticated): ?>
                         <?php if ($isAdmin): ?>
-                            <a href="/admin" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                            <a href="/admin" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Dashboard</a>
                         <?php else: ?>
-                            <a href="/account" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">My Account</a>
+                            <a href="/account" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">My Account</a>
                         <?php endif; ?>
-                        <form action="/logout" method="POST" class="inline">
+                        <form action="/logout" method="POST" class="inline-flex items-center">
                             <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
-                            <button type="submit" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Logout</button>
+                            <button type="submit" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Logout</button>
                         </form>
                     <?php else: ?>
-                        <a href="/login" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Sign In</a>
-                        <a href="/register" class="bg-primary text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Join Free</a>
+                        <a href="/login" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Sign In</a>
+                        <a href="/register" class="bg-primary text-white hover:bg-blue-800 px-3 py-1.5 rounded-md text-[13px] font-medium shadow transition-colors">Join Free</a>
                     <?php endif; ?>
                 </div>
                 <!-- Mobile menu button -->
@@ -83,30 +81,30 @@
         <!-- Mobile Menu -->
         <div class="xl:hidden hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
-                <a href="/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-                <a href="/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About Us</a>
-                <a href="/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Programs</a>
-                <a href="/opportunities" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Opportunities</a>
-                <a href="/success-stories" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Success Stories</a>
-                <a href="/events" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Events & News</a>
-                <a href="/gallery" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Gallery</a>
-                <a href="/resources" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Resources</a>
-                <a href="/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Us</a>
-                <a href="/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Donate</a>
-                <a href="/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact Us</a>
+                <a href="/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Home</a>
+                <a href="/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">About Us</a>
+                <a href="/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Programs</a>
+                <a href="/opportunities" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Opportunities</a>
+                <a href="/success-stories" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Success Stories</a>
+                <a href="/events" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Events & News</a>
+                <a href="/gallery" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Gallery</a>
+                <a href="/resources" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Resources</a>
+                <a href="/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Join Us</a>
+                <a href="/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Donate</a>
+                <a href="/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Contact Us</a>
                     <?php if ($isAuthenticated): ?>
                         <?php if ($isAdmin): ?>
-                            <a href="/admin" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                            <a href="/admin" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Dashboard</a>
                         <?php else: ?>
-                            <a href="/account" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">My Account</a>
+                            <a href="/account" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">My Account</a>
                         <?php endif; ?>
-                    <form action="/logout" method="POST" class="border-transparent block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    <form action="/logout" method="POST" class="border-transparent block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">
                         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                         <button type="submit" class="text-left text-gray-500 hover:text-gray-700">Logout</button>
                     </form>
                 <?php else: ?>
-                    <a href="/login" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Sign In</a>
-                    <a href="/register" class="border-transparent bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Free</a>
+                    <a href="/login" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Sign In</a>
+                    <a href="/register" class="border-transparent bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Join Free</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -128,7 +126,7 @@
     <?php endif; ?>
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main class="flex-grow din-content">
         <?= $content ?? '' ?>
     </main>
 
@@ -136,7 +134,7 @@
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="md:col-span-1">
-                <h3 class="text-xl font-bold mb-4">DANTWORF INSPIRES NETWORK</h3>
+                <h3 class="text-lg font-bold mb-4">DANTWORF INSPIRES NETWORK</h3>
                 <p class="text-gray-400">Empowering youth through education, scholarships, and leadership opportunities.</p>
                 <div class="mt-4 flex space-x-4">
                     <!-- Social Media Placeholders -->
@@ -145,7 +143,7 @@
                 </div>
             </div>
             <div>
-                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                <h4 class="text-base font-bold mb-4">Quick Links</h4>
                 <ul class="space-y-2">
                     <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
                     <li><a href="/programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
@@ -155,7 +153,7 @@
                 </ul>
             </div>
             <div>
-                <h4 class="text-lg font-bold mb-4">Connect</h4>
+                <h4 class="text-base font-bold mb-4">Connect</h4>
                 <ul class="space-y-2">
                     <li><a href="/join" class="text-gray-400 hover:text-white transition-colors">Join Us</a></li>
                     <li><a href="/donate" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
@@ -164,7 +162,7 @@
                 </ul>
             </div>
             <div>
-                <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                <h4 class="text-base font-bold mb-4">Newsletter</h4>
                 <p class="text-gray-400 text-sm mb-4">Subscribe to our newsletter for the latest updates on scholarships and opportunities.</p>
                 <form action="/newsletter" method="POST" class="flex flex-col space-y-2">
                     <input type="email" name="email" placeholder="Your email address" required class="px-4 py-2 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
