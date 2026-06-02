@@ -14,6 +14,11 @@ class Session {
         }
     }
 
+    public static function regenerate(bool $deleteOldSession = true): void {
+        self::start();
+        session_regenerate_id($deleteOldSession);
+    }
+
     public static function set(string $key, $value): void {
         $_SESSION[$key] = $value;
     }

@@ -26,6 +26,11 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+    <?php
+        \App\Core\Session::start();
+        $isAuthenticated = \App\Core\Session::has('user_id');
+        $isAdmin = \App\Core\Session::get('user_role') === 'admin';
+    ?>
     
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
@@ -49,6 +54,18 @@
                     <a href="/join" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Join Us</a>
                     <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Donate</a>
                     <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Contact</a>
+                    <?php if ($isAuthenticated): ?>
+                        <?php if ($isAdmin): ?>
+                            <a href="/admin" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                        <?php endif; ?>
+                        <form action="/logout" method="POST" class="inline">
+                            <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
+                            <button type="submit" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Logout</button>
+                        </form>
+                    <?php else: ?>
+                        <a href="/login" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Sign In</a>
+                        <a href="/register" class="bg-primary text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Join Free</a>
+                    <?php endif; ?>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="-mr-2 flex items-center xl:hidden">
@@ -75,6 +92,18 @@
                 <a href="/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Us</a>
                 <a href="/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Donate</a>
                 <a href="/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact Us</a>
+                <?php if ($isAuthenticated): ?>
+                    <?php if ($isAdmin): ?>
+                        <a href="/admin" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                    <?php endif; ?>
+                    <form action="/logout" method="POST" class="border-transparent block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                        <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
+                        <button type="submit" class="text-left text-gray-500 hover:text-gray-700">Logout</button>
+                    </form>
+                <?php else: ?>
+                    <a href="/login" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Sign In</a>
+                    <a href="/register" class="border-transparent bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Free</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
