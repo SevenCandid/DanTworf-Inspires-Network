@@ -1,29 +1,45 @@
 -- MySQL/MariaDB schema for DANTWORF INSPIRES NETWORK (DIN)
 -- Compatible with Hostinger Business Hosting
+-- Indexes defined inline to prevent duplicate key errors on re-import
 
 SET FOREIGN_KEY_CHECKS=0;
 
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `resources`;
+DROP TABLE IF EXISTS `success_stories`;
+DROP TABLE IF EXISTS `gallery`;
+DROP TABLE IF EXISTS `events`;
+DROP TABLE IF EXISTS `blogs`;
+DROP TABLE IF EXISTS `newsletter_subscribers`;
+DROP TABLE IF EXISTS `donations`;
+DROP TABLE IF EXISTS `volunteers`;
+DROP TABLE IF EXISTS `members`;
+DROP TABLE IF EXISTS `contact_messages`;
+DROP TABLE IF EXISTS `opportunities`;
+DROP TABLE IF EXISTS `settings`;
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) UNIQUE NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
     `password_hash` VARCHAR(255) NOT NULL,
     `role` ENUM('admin', 'student') DEFAULT 'student',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `deleted_at` TIMESTAMP NULL DEFAULT NULL
+    `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+    UNIQUE KEY `uq_users_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_users_email ON `users`(`email`);
 
-CREATE TABLE IF NOT EXISTS `settings` (
+CREATE TABLE `settings` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `setting_key` VARCHAR(100) UNIQUE NOT NULL,
+    `setting_key` VARCHAR(100) NOT NULL,
     `setting_value` TEXT,
     `description` TEXT,
-    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY `uq_settings_key` (`setting_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `opportunities` (
+CREATE TABLE `opportunities` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
@@ -33,24 +49,24 @@ CREATE TABLE IF NOT EXISTS `opportunities` (
     `is_featured` TINYINT(1) DEFAULT 0,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `deleted_at` TIMESTAMP NULL DEFAULT NULL
+    `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+    KEY `idx_opportunities_deadline` (`deadline`),
+    KEY `idx_opportunities_category` (`category`),
+    KEY `idx_opportunities_featured` (`is_featured`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_opportunities_deadline ON `opportunities`(`deadline`);
-CREATE INDEX idx_opportunities_category ON `opportunities`(`category`);
-CREATE INDEX idx_opportunities_featured ON `opportunities`(`is_featured`);
 
-CREATE TABLE IF NOT EXISTS `contact_messages` (
+CREATE TABLE `contact_messages` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `subject` VARCHAR(255),
     `message` TEXT NOT NULL,
     `status` ENUM('unread','read','archived') DEFAULT 'unread',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    KEY `idx_contact_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_contact_messages_status ON `contact_messages`(`status`);
 
-CREATE TABLE IF NOT EXISTS `members` (
+CREATE TABLE `members` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `full_name` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
@@ -60,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `members` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `volunteers` (
+CREATE TABLE `volunteers` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `full_name` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
@@ -68,11 +84,11 @@ CREATE TABLE IF NOT EXISTS `volunteers` (
     `skills` TEXT,
     `availability` VARCHAR(255),
     `status` ENUM('pending','approved','rejected') DEFAULT 'pending',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    KEY `idx_volunteers_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_volunteers_status ON `volunteers`(`status`);
 
-CREATE TABLE IF NOT EXISTS `donations` (
+CREATE TABLE `donations` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `donor_name` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
@@ -80,29 +96,30 @@ CREATE TABLE IF NOT EXISTS `donations` (
     `payment_method` VARCHAR(50) NOT NULL,
     `transaction_reference` VARCHAR(255),
     `status` ENUM('pending','completed','failed') DEFAULT 'pending',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    KEY `idx_donations_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_donations_status ON `donations`(`status`);
 
-CREATE TABLE IF NOT EXISTS `newsletter_subscribers` (
+CREATE TABLE `newsletter_subscribers` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `email` VARCHAR(255) UNIQUE NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
     `is_active` TINYINT(1) DEFAULT 1,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY `uq_newsletter_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `blogs` (
+CREATE TABLE `blogs` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,
     `content` LONGTEXT NOT NULL,
     `status` ENUM('draft','published','archived') DEFAULT 'draft',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `deleted_at` TIMESTAMP NULL DEFAULT NULL
+    `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+    KEY `idx_blogs_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_blogs_status ON `blogs`(`status`);
 
-CREATE TABLE IF NOT EXISTS `events` (
+CREATE TABLE `events` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,
     `description` TEXT NOT NULL,
@@ -110,20 +127,20 @@ CREATE TABLE IF NOT EXISTS `events` (
     `location` VARCHAR(255),
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `deleted_at` TIMESTAMP NULL DEFAULT NULL
+    `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+    KEY `idx_events_date` (`event_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_events_date ON `events`(`event_date`);
 
-CREATE TABLE IF NOT EXISTS `gallery` (
+CREATE TABLE `gallery` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `album` VARCHAR(255) DEFAULT 'General',
     `file_path` VARCHAR(255) NOT NULL,
     `type` ENUM('image','video') DEFAULT 'image',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    KEY `idx_gallery_album` (`album`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-CREATE INDEX idx_gallery_album ON `gallery`(`album`);
 
-CREATE TABLE IF NOT EXISTS `success_stories` (
+CREATE TABLE `success_stories` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
     `headline` VARCHAR(255) NOT NULL,
@@ -133,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `success_stories` (
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `resources` (
+CREATE TABLE `resources` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,
     `file_path` VARCHAR(255) NOT NULL,
