@@ -18,7 +18,7 @@ class Database {
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                     PDO::ATTR_EMULATE_PREPARES   => false,
                 ];
-                self::$instance = new PDO($dsn, Config::DB_USER, Config::DB_PASS, $options);
+                self::$instance = new PDO($dsn, Config::getDbUser(), Config::getDbPass(), $options);
             } catch (PDOException $e) {
                 // In production, log error instead of displaying
                 die('Database Connection Failed: ' . $e->getMessage());
