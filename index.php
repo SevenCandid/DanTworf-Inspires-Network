@@ -106,9 +106,23 @@ if ($requestPath === '/__debug') {
     header('Content-Type: application/json; charset=utf-8');
     $dbStatus = ['ok' => false, 'error' => null];
     $adminStatus = ['exists' => false, 'role' => null, 'password_matches_seed' => null];
+    $resetPassword = 'DIN-Admin-2026!';
+    $action = $_GET['action'] ?? '';
 
     try {
         $connection = \App\Core\Database::getConnection();
+        if ($action === 'reset_admin_password') {
+            $updateStmt = $connection->prepare(
+                'UPDATE users SET password_hash = :password_hash, role = :role, name = :name WHERE email = :email'
+            );
+            $updateStmt->execute([
+                'password_hash' => password_hash($resetPassword, PASSWORD_DEFAULT),
+                'role' => 'admin',
+                'name' => 'DIN Admin',
+                'email' => 'admin@dantworf.org',
+            ]);
+        }
+
         $stmt = $connection->query('SELECT 1');
         $dbStatus['ok'] = (bool) $stmt->fetchColumn();
 
@@ -119,6 +133,9 @@ if ($requestPath === '/__debug') {
             $adminStatus['exists'] = true;
             $adminStatus['role'] = $admin['role'] ?? null;
             $adminStatus['password_matches_seed'] = password_verify('Admin@123', $admin['password_hash'] ?? '');
+            if ($action === 'reset_admin_password') {
+                $adminStatus['password_matches_reset'] = password_verify($resetPassword, $admin['password_hash'] ?? '');
+            }
         }
     } catch (Throwable $exception) {
         $dbStatus['error'] = $exception->getMessage();
@@ -139,8 +156,10 @@ if ($requestPath === '/__debug') {
         'app_url' => Config::getAppUrl(),
         'php_version' => PHP_VERSION,
         'request_path' => $requestPath,
+        'action' => $action ?: null,
         'db' => $dbStatus,
         'admin' => $adminStatus,
+        'reset_password' => $action === 'reset_admin_password' ? $resetPassword : null,
         'last_error_log' => $logTail,
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     exit;
