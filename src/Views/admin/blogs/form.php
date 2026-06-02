@@ -1,12 +1,12 @@
 <?php ob_start(); ?>
 
 <div class="mb-6">
-    <a href="/DIN/public/admin/blogs" class="text-gray-500 hover:text-gray-700 text-sm">&larr; Back to Articles</a>
+    <a href="/admin/blogs" class="text-gray-500 hover:text-gray-700 text-sm">&larr; Back to Articles</a>
     <h2 class="text-2xl font-bold text-gray-800 mt-2"><?= isset($blog) ? 'Edit Article' : 'Create New Article' ?></h2>
 </div>
 
 <div class="bg-white shadow-sm rounded-xl p-6 border border-gray-100">
-    <form action="<?= isset($blog) ? '/DIN/public/admin/blogs/edit?id=' . $blog['id'] : '/DIN/public/admin/blogs/create' ?>" method="POST" class="space-y-6">
+    <form action="<?= isset($blog) ? '/admin/blogs/edit?id=' . $blog['id'] : '/admin/blogs/create' ?>" method="POST" class="space-y-6">
         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
         
         <div>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="flex justify-end space-x-3">
-            <a href="/DIN/public/admin/blogs" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">Cancel</a>
+            <a href="/admin/blogs" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">Cancel</a>
             <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium">
                 <?= isset($blog) ? 'Update Article' : 'Create Article' ?>
             </button>
@@ -69,3 +69,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../../layouts/admin.php';
 ?>
+

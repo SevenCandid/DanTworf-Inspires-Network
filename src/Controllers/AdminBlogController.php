@@ -27,7 +27,7 @@ class AdminBlogController extends AdminBaseController {
             if ($title && $content) {
                 Blog::create($title, $content, $status);
                 Session::set('flash_success', 'Blog article created.');
-                header("Location: /DIN/public/admin/blogs");
+                header("Location: /admin/blogs");
                 exit;
             } else {
                 Session::set('flash_error', 'Title and content are required.');
@@ -41,7 +41,7 @@ class AdminBlogController extends AdminBaseController {
         $blog = Blog::getById($id);
         if (!$blog) {
             Session::set('flash_error', 'Article not found.');
-            header("Location: /DIN/public/admin/blogs");
+            header("Location: /admin/blogs");
             exit;
         }
 
@@ -56,7 +56,7 @@ class AdminBlogController extends AdminBaseController {
             if ($title && $content) {
                 Blog::update($id, $title, $content, $status);
                 Session::set('flash_success', 'Blog article updated.');
-                header("Location: /DIN/public/admin/blogs");
+                header("Location: /admin/blogs");
                 exit;
             } else {
                 Session::set('flash_error', 'Title and content are required.');
@@ -75,8 +75,9 @@ class AdminBlogController extends AdminBaseController {
                 Blog::delete($id);
                 Session::set('flash_success', 'Article deleted.');
             }
-            header("Location: /DIN/public/admin/blogs");
+            header("Location: /admin/blogs");
             exit;
         }
     }
 }
+

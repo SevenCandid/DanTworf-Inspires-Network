@@ -24,7 +24,7 @@ class AdminDataController extends AdminBaseController {
             if ($id) {
                 ContactMessage::markAsRead($id);
             }
-            header("Location: /DIN/public/admin/messages");
+            header("Location: /admin/messages");
             exit;
         }
     }
@@ -87,3 +87,4 @@ class AdminDataController extends AdminBaseController {
         exit;
     }
 }
+

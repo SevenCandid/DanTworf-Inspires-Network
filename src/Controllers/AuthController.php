@@ -10,7 +10,7 @@ class AuthController {
     public function login() {
         Session::start();
         if (Session::has('user_id')) {
-            header("Location: /DIN/public/admin");
+            header("Location: /admin");
             exit;
         }
         require_once __DIR__ . '/../Views/admin/login.php';
@@ -33,12 +33,12 @@ class AuthController {
                 Session::set('user_role', $user['role']);
                 Session::set('user_name', $user['name']);
                 
-                header("Location: /DIN/public/admin");
+                header("Location: /admin");
                 exit;
             } else {
                 Session::start();
                 Session::set('flash_error', 'Invalid email or password.');
-                header("Location: /DIN/public/login");
+                header("Location: /login");
                 exit;
             }
         }
@@ -46,7 +46,8 @@ class AuthController {
 
     public function logout() {
         Session::destroy();
-        header("Location: /DIN/public/");
+        header("Location: /");
         exit;
     }
 }
+

@@ -7,7 +7,7 @@
 <!-- Upload Form -->
 <div class="bg-white shadow-sm rounded-xl p-6 border border-gray-100 mb-8">
     <h3 class="text-lg font-semibold text-gray-800 mb-4">Upload New Resource (PDF)</h3>
-    <form action="/DIN/public/admin/resources/upload" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row items-end gap-4">
+    <form action="/admin/resources/upload" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row items-end gap-4">
         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
         <div class="flex-1 w-full">
             <label class="block text-sm font-medium text-gray-700">Title</label>
@@ -55,8 +55,8 @@
                         <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($resource['category']) ?></td>
                         <td class="px-6 py-4 text-sm text-gray-500"><?= date('M d, Y', strtotime($resource['created_at'])) ?></td>
                         <td class="px-6 py-4 text-right space-x-2">
-                            <a href="/DIN/public/<?= htmlspecialchars($resource['file_path']) ?>" target="_blank" class="text-secondary hover:text-green-700 text-sm font-medium">Download</a>
-                            <form action="/DIN/public/admin/resources/delete" method="POST" class="inline" onsubmit="return confirm('Delete this resource?')">
+                            <a href="/<?= htmlspecialchars($resource['file_path']) ?>" target="_blank" class="text-secondary hover:text-green-700 text-sm font-medium">Download</a>
+                            <form action="/admin/resources/delete" method="POST" class="inline" onsubmit="return confirm('Delete this resource?')">
                                 <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                                 <input type="hidden" name="id" value="<?= $resource['id'] ?>">
                                 <button type="submit" class="text-red-600 hover:text-red-800 text-sm font-medium">Delete</button>
@@ -75,3 +75,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../../layouts/admin.php';
 ?>
+

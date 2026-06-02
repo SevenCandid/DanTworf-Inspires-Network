@@ -2,7 +2,7 @@
 
 <div class="flex items-center justify-between mb-6">
     <h2 class="text-2xl font-bold text-gray-800">Blog Articles</h2>
-    <a href="/DIN/public/admin/blogs/create" class="bg-primary hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
+    <a href="/admin/blogs/create" class="bg-primary hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
         <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         New Article
     </a>
@@ -32,8 +32,8 @@
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-500"><?= date('M d, Y', strtotime($blog['created_at'])) ?></td>
                         <td class="px-6 py-4 text-right space-x-2">
-                            <a href="/DIN/public/admin/blogs/edit?id=<?= $blog['id'] ?>" class="text-primary hover:text-blue-800 text-sm font-medium">Edit</a>
-                            <form action="/DIN/public/admin/blogs/delete" method="POST" class="inline" onsubmit="return confirm('Delete this article?')">
+                            <a href="/admin/blogs/edit?id=<?= $blog['id'] ?>" class="text-primary hover:text-blue-800 text-sm font-medium">Edit</a>
+                            <form action="/admin/blogs/delete" method="POST" class="inline" onsubmit="return confirm('Delete this article?')">
                                 <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                                 <input type="hidden" name="id" value="<?= $blog['id'] ?>">
                                 <button type="submit" class="text-red-600 hover:text-red-800 text-sm font-medium">Delete</button>
@@ -52,3 +52,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../../layouts/admin.php';
 ?>
+

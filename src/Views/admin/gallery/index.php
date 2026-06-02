@@ -7,7 +7,7 @@
 <!-- Upload Form -->
 <div class="bg-white shadow-sm rounded-xl p-6 border border-gray-100 mb-8">
     <h3 class="text-lg font-semibold text-gray-800 mb-4">Upload New Photo</h3>
-    <form action="/DIN/public/admin/gallery/upload" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row items-end gap-4">
+    <form action="/admin/gallery/upload" method="POST" enctype="multipart/form-data" class="flex flex-col md:flex-row items-end gap-4">
         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
         <div class="flex-1 w-full">
             <label class="block text-sm font-medium text-gray-700">Album Name</label>
@@ -28,12 +28,12 @@
     <?php if (!empty($galleryItems)): ?>
         <?php foreach ($galleryItems as $item): ?>
             <div class="relative group bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                <img src="/DIN/public/<?= htmlspecialchars($item['file_path']) ?>" alt="Gallery" class="w-full h-40 object-cover">
+                <img src="/<?= htmlspecialchars($item['file_path']) ?>" alt="Gallery" class="w-full h-40 object-cover">
                 <div class="p-3">
                     <p class="text-xs text-gray-500 font-medium"><?= htmlspecialchars($item['album']) ?></p>
                     <p class="text-xs text-gray-400"><?= date('M d, Y', strtotime($item['created_at'])) ?></p>
                 </div>
-                <form action="/DIN/public/admin/gallery/delete" method="POST" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity" onsubmit="return confirm('Delete this image?')">
+                <form action="/admin/gallery/delete" method="POST" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity" onsubmit="return confirm('Delete this image?')">
                     <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                     <input type="hidden" name="id" value="<?= $item['id'] ?>">
                     <button type="submit" class="bg-red-600 text-white p-1.5 rounded-full hover:bg-red-700 shadow-lg">
@@ -54,3 +54,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../../layouts/admin.php';
 ?>
+

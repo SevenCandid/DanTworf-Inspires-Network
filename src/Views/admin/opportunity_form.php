@@ -1,12 +1,12 @@
 <?php ob_start(); ?>
 
 <div class="mb-6">
-    <a href="/DIN/public/admin/opportunities" class="text-gray-500 hover:text-gray-700 text-sm">&larr; Back to Opportunities</a>
+    <a href="/admin/opportunities" class="text-gray-500 hover:text-gray-700 text-sm">&larr; Back to Opportunities</a>
     <h2 class="text-2xl font-bold text-gray-800 mt-2"><?= isset($opportunity) && $opportunity ? 'Edit Opportunity' : 'Create Opportunity' ?></h2>
 </div>
 
 <div class="max-w-2xl bg-white shadow-sm rounded-xl p-6 border border-gray-100">
-    <form action="<?= (isset($opportunity) && $opportunity) ? '/DIN/public/admin/opportunities/edit?id=' . $opportunity['id'] : '/DIN/public/admin/opportunities/create' ?>" method="POST" class="space-y-6">
+    <form action="<?= (isset($opportunity) && $opportunity) ? '/admin/opportunities/edit?id=' . $opportunity['id'] : '/admin/opportunities/create' ?>" method="POST" class="space-y-6">
         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
         
         <div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="flex justify-end space-x-3">
-            <a href="/DIN/public/admin/opportunities" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm font-medium transition-colors">Cancel</a>
+            <a href="/admin/opportunities" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-sm font-medium transition-colors">Cancel</a>
             <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-800 text-sm font-medium transition-colors">
                 <?= (isset($opportunity) && $opportunity) ? 'Update Opportunity' : 'Save Opportunity' ?>
             </button>
@@ -55,3 +55,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../layouts/admin.php';
 ?>
+

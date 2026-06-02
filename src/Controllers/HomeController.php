@@ -66,7 +66,7 @@ class HomeController {
                 Session::start();
                 Session::set('flash_success', 'Thank you for joining DIN! We will be in touch soon.');
             }
-            header("Location: /DIN/public/join");
+            header("Location: /join");
             exit;
         }
     }
@@ -87,7 +87,7 @@ class HomeController {
                 Session::start();
                 Session::set('flash_success', 'Thank you for volunteering! Your application has been received.');
             }
-            header("Location: /DIN/public/join");
+            header("Location: /join");
             exit;
         }
     }
@@ -112,7 +112,7 @@ class HomeController {
                 Session::start();
                 Session::set('flash_success', 'Thank you for your generous donation details. We will verify the transaction shortly.');
             }
-            header("Location: /DIN/public/donate");
+            header("Location: /donate");
             exit;
         }
     }
@@ -141,7 +141,7 @@ class HomeController {
                 Session::set('flash_error', 'Please fill in all required fields.');
             }
             
-            header("Location: /DIN/public/contact");
+            header("Location: /contact");
             exit;
         }
     }
@@ -156,9 +156,10 @@ class HomeController {
                 Session::set('flash_success', 'Thank you for subscribing to our newsletter!');
             }
             // Redirect back to referring page
-            $referer = $_SERVER['HTTP_REFERER'] ?? '/DIN/public/';
+            $referer = $_SERVER['HTTP_REFERER'] ?? '/';
             header("Location: $referer");
             exit;
         }
     }
 }
+

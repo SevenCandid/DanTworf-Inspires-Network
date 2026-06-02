@@ -32,7 +32,7 @@ class AdminResourceController extends AdminBaseController {
                 Session::set('flash_error', 'Title and a valid PDF file are required.');
             }
             
-            header("Location: /DIN/public/admin/resources");
+            header("Location: /admin/resources");
             exit;
         }
     }
@@ -54,8 +54,9 @@ class AdminResourceController extends AdminBaseController {
                     Session::set('flash_success', 'Resource deleted.');
                 }
             }
-            header("Location: /DIN/public/admin/resources");
+            header("Location: /admin/resources");
             exit;
         }
     }
 }
+

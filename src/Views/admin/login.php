@@ -28,7 +28,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/DIN/public/login" method="POST" class="space-y-6">
+        <form action="/login" method="POST" class="space-y-6">
             <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
             
             <div>
@@ -48,3 +48,4 @@
     </div>
 </body>
 </html>
+

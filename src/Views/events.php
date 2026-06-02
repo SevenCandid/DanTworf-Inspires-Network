@@ -89,7 +89,7 @@
             <div class="mt-8 bg-blue-50 rounded-lg p-6 text-center border border-blue-100">
                 <h4 class="font-bold text-gray-900 mb-2">Want to host an event with us?</h4>
                 <p class="text-sm text-gray-600 mb-4">Partner with DIN to reach thousands of ambitious youths.</p>
-                <a href="/DIN/public/contact" class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold hover:bg-blue-800">Partner With Us</a>
+                <a href="/contact" class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold hover:bg-blue-800">Partner With Us</a>
             </div>
         </div>
 
@@ -100,3 +100,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

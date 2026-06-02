@@ -18,12 +18,12 @@
                     </p>
                     <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                         <div class="rounded-md shadow">
-                            <a href="/DIN/public/join" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-green-600 md:py-4 md:text-lg md:px-10 transition-colors">
+                            <a href="/join" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-green-600 md:py-4 md:text-lg md:px-10 transition-colors">
                                 Join Now
                             </a>
                         </div>
                         <div class="mt-3 sm:mt-0 sm:ml-3">
-                            <a href="/DIN/public/donate" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-colors">
+                            <a href="/donate" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-colors">
                                 Donate
                             </a>
                         </div>
@@ -106,7 +106,7 @@
             <?php endif; ?>
         </div>
         <div class="mt-10 text-center">
-            <a href="/DIN/public/opportunities" class="text-primary font-bold hover:underline">View All Opportunities &rarr;</a>
+            <a href="/opportunities" class="text-primary font-bold hover:underline">View All Opportunities &rarr;</a>
         </div>
     </div>
 </div>
@@ -138,7 +138,7 @@
                         <p class="text-sm text-gray-500">DIN Headquarters, Main Hall</p>
                     </div>
                 </div>
-                <a href="/DIN/public/events" class="inline-block mt-4 text-primary font-bold hover:underline">See all events &rarr;</a>
+                <a href="/events" class="inline-block mt-4 text-primary font-bold hover:underline">See all events &rarr;</a>
             </div>
         </div>
 
@@ -164,7 +164,7 @@
                     </div>
                 </div>
             </div>
-            <a href="/DIN/public/success-stories" class="inline-block mt-4 text-primary font-bold hover:underline">Read more stories &rarr;</a>
+            <a href="/success-stories" class="inline-block mt-4 text-primary font-bold hover:underline">Read more stories &rarr;</a>
         </div>
     </div>
 </div>
@@ -180,7 +180,7 @@
             Your generous donation allows us to provide more scholarships, run effective mentorship programs, and reach remote communities.
         </p>
         <div class="mt-8">
-            <a href="/DIN/public/donate" class="bg-secondary border border-transparent rounded-md shadow px-8 py-3 inline-flex items-center text-base font-medium text-white hover:bg-green-600 transition-colors">
+            <a href="/donate" class="bg-secondary border border-transparent rounded-md shadow px-8 py-3 inline-flex items-center text-base font-medium text-white hover:bg-green-600 transition-colors">
                 Make a Donation Today
             </a>
         </div>
@@ -191,3 +191,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

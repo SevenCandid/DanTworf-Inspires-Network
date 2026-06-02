@@ -2,7 +2,7 @@
 
 <div class="flex items-center justify-between mb-6">
     <h2 class="text-2xl font-bold text-gray-800">Newsletter Subscribers</h2>
-    <a href="/DIN/public/admin/subscribers/export" class="bg-secondary hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
+    <a href="/admin/subscribers/export" class="bg-secondary hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center">
         <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
         Export CSV
     </a>
@@ -37,3 +37,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../../layouts/admin.php';
 ?>
+

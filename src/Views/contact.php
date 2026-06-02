@@ -67,7 +67,7 @@
             <!-- Contact Form -->
             <div class="bg-gray-50 rounded-lg p-8 shadow-sm border border-gray-100">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
-                <form action="/DIN/public/contact" method="POST" class="space-y-6">
+                <form action="/contact" method="POST" class="space-y-6">
                     <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                     
                     <div>
@@ -104,3 +104,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

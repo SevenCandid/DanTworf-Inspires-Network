@@ -45,7 +45,7 @@ class AdminController extends AdminBaseController {
             } else {
                 Session::set('flash_error', 'Title, description, and category are required.');
             }
-            header("Location: /DIN/public/admin/opportunities");
+            header("Location: /admin/opportunities");
             exit;
         }
         $opportunity = null;
@@ -57,7 +57,7 @@ class AdminController extends AdminBaseController {
         $opportunity = Opportunity::getById($id);
         if (!$opportunity) {
             Session::set('flash_error', 'Opportunity not found.');
-            header("Location: /DIN/public/admin/opportunities");
+            header("Location: /admin/opportunities");
             exit;
         }
 
@@ -75,7 +75,7 @@ class AdminController extends AdminBaseController {
             if ($title && $description && $category) {
                 Opportunity::update($id, $title, $description, $category, $link, $deadline ?: null);
                 Session::set('flash_success', 'Opportunity updated.');
-                header("Location: /DIN/public/admin/opportunities");
+                header("Location: /admin/opportunities");
                 exit;
             } else {
                 Session::set('flash_error', 'Title, description, and category are required.');
@@ -94,7 +94,7 @@ class AdminController extends AdminBaseController {
                 Opportunity::delete($id);
                 Session::set('flash_success', 'Opportunity deleted.');
             }
-            header("Location: /DIN/public/admin/opportunities");
+            header("Location: /admin/opportunities");
             exit;
         }
     }
@@ -111,8 +111,9 @@ class AdminController extends AdminBaseController {
                 Opportunity::toggleFeature($id, $is_featured);
                 Session::set('flash_success', 'Opportunity feature status updated.');
             }
-            header("Location: /DIN/public/admin/opportunities");
+            header("Location: /admin/opportunities");
             exit;
         }
     }
 }
+

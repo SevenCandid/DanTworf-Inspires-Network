@@ -13,7 +13,7 @@
             <h2 class="text-2xl font-bold text-primary mb-2">Become a Member</h2>
             <p class="text-gray-600 mb-6 text-sm">Members get priority access to mentorship programs, specialized workshops, and our private networking group.</p>
             
-            <form action="/DIN/public/join" method="POST" class="space-y-5">
+            <form action="/join" method="POST" class="space-y-5">
                 <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                 
                 <div>
@@ -52,7 +52,7 @@
             <h2 class="text-2xl font-bold text-secondary mb-2">Become a Volunteer</h2>
             <p class="text-gray-600 mb-6 text-sm">Share your skills and time to empower the next generation. We are looking for mentors, event organizers, and content creators.</p>
             
-            <form action="/DIN/public/volunteer" method="POST" class="space-y-5">
+            <form action="/volunteer" method="POST" class="space-y-5">
                 <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                 
                 <div>
@@ -98,3 +98,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

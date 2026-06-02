@@ -30,7 +30,7 @@ class AdminSuccessStoryController extends AdminBaseController {
             if ($name && $headline && $content) {
                 SuccessStory::create($name, $headline, $content, $imagePath);
                 Session::set('flash_success', 'Success story created.');
-                header("Location: /DIN/public/admin/success-stories");
+                header("Location: /admin/success-stories");
                 exit;
             } else {
                 Session::set('flash_error', 'Name, headline, and content are required.');
@@ -43,7 +43,7 @@ class AdminSuccessStoryController extends AdminBaseController {
         $id = (int)($_GET['id'] ?? 0);
         $story = SuccessStory::getById($id);
         if (!$story) {
-            header("Location: /DIN/public/admin/success-stories");
+            header("Location: /admin/success-stories");
             exit;
         }
 
@@ -66,7 +66,7 @@ class AdminSuccessStoryController extends AdminBaseController {
             if ($name && $headline && $content) {
                 SuccessStory::update($id, $name, $headline, $content, $imagePath);
                 Session::set('flash_success', 'Success story updated.');
-                header("Location: /DIN/public/admin/success-stories");
+                header("Location: /admin/success-stories");
                 exit;
             }
         }
@@ -83,8 +83,9 @@ class AdminSuccessStoryController extends AdminBaseController {
                 SuccessStory::delete($id);
                 Session::set('flash_success', 'Success story deleted.');
             }
-            header("Location: /DIN/public/admin/success-stories");
+            header("Location: /admin/success-stories");
             exit;
         }
     }
 }
+

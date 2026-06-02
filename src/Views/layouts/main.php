@@ -23,7 +23,7 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/DIN/public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
     
@@ -33,22 +33,22 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="/DIN/public/" class="text-2xl font-bold text-primary tracking-tight">DIN</a>
+                        <a href="/" class="text-2xl font-bold text-primary tracking-tight">DIN</a>
                     </div>
                 </div>
                 <!-- Desktop Nav -->
                 <div class="hidden xl:ml-6 xl:flex xl:space-x-4 xl:items-center">
-                    <a href="/DIN/public/" class="text-gray-900 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                    <a href="/DIN/public/about" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
-                    <a href="/DIN/public/programs" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Programs</a>
-                    <a href="/DIN/public/opportunities" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Opportunities</a>
-                    <a href="/DIN/public/success-stories" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Success Stories</a>
-                    <a href="/DIN/public/events" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Events & News</a>
-                    <a href="/DIN/public/gallery" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Gallery</a>
-                    <a href="/DIN/public/resources" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Resources</a>
-                    <a href="/DIN/public/join" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Join Us</a>
-                    <a href="/DIN/public/donate" class="bg-secondary text-white hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Donate</a>
-                    <a href="/DIN/public/contact" class="bg-primary text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Contact</a>
+                    <a href="/" class="text-gray-900 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="/about" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
+                    <a href="/programs" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Programs</a>
+                    <a href="/opportunities" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Opportunities</a>
+                    <a href="/success-stories" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Success Stories</a>
+                    <a href="/events" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Events & News</a>
+                    <a href="/gallery" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Gallery</a>
+                    <a href="/resources" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Resources</a>
+                    <a href="/join" class="text-gray-500 hover:text-primary px-2 py-2 rounded-md text-sm font-medium transition-colors">Join Us</a>
+                    <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Donate</a>
+                    <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium shadow transition-colors">Contact</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="-mr-2 flex items-center xl:hidden">
@@ -64,17 +64,17 @@
         <!-- Mobile Menu -->
         <div class="xl:hidden hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
-                <a href="/DIN/public/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-                <a href="/DIN/public/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About Us</a>
-                <a href="/DIN/public/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Programs</a>
-                <a href="/DIN/public/opportunities" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Opportunities</a>
-                <a href="/DIN/public/success-stories" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Success Stories</a>
-                <a href="/DIN/public/events" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Events & News</a>
-                <a href="/DIN/public/gallery" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Gallery</a>
-                <a href="/DIN/public/resources" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Resources</a>
-                <a href="/DIN/public/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Us</a>
-                <a href="/DIN/public/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Donate</a>
-                <a href="/DIN/public/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact Us</a>
+                <a href="/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About Us</a>
+                <a href="/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Programs</a>
+                <a href="/opportunities" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Opportunities</a>
+                <a href="/success-stories" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Success Stories</a>
+                <a href="/events" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Events & News</a>
+                <a href="/gallery" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Gallery</a>
+                <a href="/resources" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Resources</a>
+                <a href="/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Join Us</a>
+                <a href="/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Donate</a>
+                <a href="/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -114,26 +114,26 @@
             <div>
                 <h4 class="text-lg font-bold mb-4">Quick Links</h4>
                 <ul class="space-y-2">
-                    <li><a href="/DIN/public/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="/DIN/public/programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
-                    <li><a href="/DIN/public/opportunities" class="text-gray-400 hover:text-white transition-colors">Opportunities</a></li>
-                    <li><a href="/DIN/public/events" class="text-gray-400 hover:text-white transition-colors">Events & News</a></li>
-                    <li><a href="/DIN/public/gallery" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                    <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="/programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+                    <li><a href="/opportunities" class="text-gray-400 hover:text-white transition-colors">Opportunities</a></li>
+                    <li><a href="/events" class="text-gray-400 hover:text-white transition-colors">Events & News</a></li>
+                    <li><a href="/gallery" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4">Connect</h4>
                 <ul class="space-y-2">
-                    <li><a href="/DIN/public/join" class="text-gray-400 hover:text-white transition-colors">Join Us</a></li>
-                    <li><a href="/DIN/public/donate" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
-                    <li><a href="/DIN/public/contact" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                    <li><a href="/DIN/public/admin" class="text-xs text-gray-600 hover:text-gray-400">Admin Login</a></li>
+                    <li><a href="/join" class="text-gray-400 hover:text-white transition-colors">Join Us</a></li>
+                    <li><a href="/donate" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
+                    <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="/admin" class="text-xs text-gray-600 hover:text-gray-400">Admin Login</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4">Newsletter</h4>
                 <p class="text-gray-400 text-sm mb-4">Subscribe to our newsletter for the latest updates on scholarships and opportunities.</p>
-                <form action="/DIN/public/newsletter" method="POST" class="flex flex-col space-y-2">
+                <form action="/newsletter" method="POST" class="flex flex-col space-y-2">
                     <input type="email" name="email" placeholder="Your email address" required class="px-4 py-2 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                     <button type="submit" class="bg-secondary hover:bg-green-600 px-4 py-2 rounded text-white font-medium transition-colors">Subscribe</button>
                 </form>
@@ -144,6 +144,7 @@
         </div>
     </footer>
 
-    <script src="/DIN/public/js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
+

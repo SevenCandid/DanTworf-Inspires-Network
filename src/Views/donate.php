@@ -51,7 +51,7 @@
             <h2 class="text-2xl font-bold text-gray-900 mb-2">Confirm Your Donation</h2>
             <p class="text-gray-600 mb-6 text-sm">Already made a transfer? Please fill out this form so we can confirm receipt and send you a thank you note.</p>
             
-            <form action="/DIN/public/donate" method="POST" class="space-y-5">
+            <form action="/donate" method="POST" class="space-y-5">
                 <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                 
                 <div>
@@ -96,3 +96,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

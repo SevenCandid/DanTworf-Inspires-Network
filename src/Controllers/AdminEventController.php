@@ -25,7 +25,7 @@ class AdminEventController extends AdminBaseController {
             if ($title && $description && $eventDate) {
                 Event::create($title, $description, $eventDate, $location);
                 Session::set('flash_success', 'Event created.');
-                header("Location: /DIN/public/admin/events");
+                header("Location: /admin/events");
                 exit;
             } else {
                 Session::set('flash_error', 'Title, description, and date are required.');
@@ -38,7 +38,7 @@ class AdminEventController extends AdminBaseController {
         $id = (int)($_GET['id'] ?? 0);
         $event = Event::getById($id);
         if (!$event) {
-            header("Location: /DIN/public/admin/events");
+            header("Location: /admin/events");
             exit;
         }
 
@@ -54,7 +54,7 @@ class AdminEventController extends AdminBaseController {
             if ($title && $description && $eventDate) {
                 Event::update($id, $title, $description, $eventDate, $location);
                 Session::set('flash_success', 'Event updated.');
-                header("Location: /DIN/public/admin/events");
+                header("Location: /admin/events");
                 exit;
             } else {
                 Session::set('flash_error', 'Required fields missing.');
@@ -73,8 +73,9 @@ class AdminEventController extends AdminBaseController {
                 Event::delete($id);
                 Session::set('flash_success', 'Event deleted.');
             }
-            header("Location: /DIN/public/admin/events");
+            header("Location: /admin/events");
             exit;
         }
     }
 }
+

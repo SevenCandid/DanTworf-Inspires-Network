@@ -30,7 +30,7 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <?php if ($msg['status'] === 'unread'): ?>
-                                <form action="/DIN/public/admin/messages/mark-read" method="POST" class="inline">
+                                <form action="/admin/messages/mark-read" method="POST" class="inline">
                                     <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                                     <input type="hidden" name="id" value="<?= $msg['id'] ?>">
                                     <button type="submit" class="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 rounded-full text-xs font-semibold transition-colors">
@@ -54,3 +54,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/../../layouts/admin.php';
 ?>
+

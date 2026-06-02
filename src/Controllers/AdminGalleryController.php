@@ -37,7 +37,7 @@ class AdminGalleryController extends AdminBaseController {
                 Session::set('flash_error', 'Please select a valid file.');
             }
             
-            header("Location: /DIN/public/admin/gallery");
+            header("Location: /admin/gallery");
             exit;
         }
     }
@@ -60,8 +60,9 @@ class AdminGalleryController extends AdminBaseController {
                     Session::set('flash_success', 'Item deleted.');
                 }
             }
-            header("Location: /DIN/public/admin/gallery");
+            header("Location: /admin/gallery");
             exit;
         }
     }
 }
+
