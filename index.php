@@ -92,78 +92,7 @@ if (Config::getAppEnv() === 'production') {
     header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
 }
 
-// Temporary debug endpoint. Enable by setting DEBUG_TOKEN in .env and visiting /__debug?token=YOUR_TOKEN
 $requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
-$debugToken = Env::get('DEBUG_TOKEN', '');
-if ($requestPath === '/__debug') {
-    $providedToken = $_GET['token'] ?? '';
-    if ($debugToken === '' || !hash_equals($debugToken, (string) $providedToken)) {
-        http_response_code(404);
-        echo 'Not Found';
-        exit;
-    }
-
-    header('Content-Type: application/json; charset=utf-8');
-    $dbStatus = ['ok' => false, 'error' => null];
-    $adminStatus = ['exists' => false, 'role' => null, 'password_matches_seed' => null];
-    $resetPassword = 'DIN-Admin-2026!';
-    $action = $_GET['action'] ?? '';
-
-    try {
-        $connection = \App\Core\Database::getConnection();
-        if ($action === 'reset_admin_password') {
-            $updateStmt = $connection->prepare(
-                'UPDATE users SET password_hash = :password_hash, role = :role, name = :name WHERE email = :email'
-            );
-            $updateStmt->execute([
-                'password_hash' => password_hash($resetPassword, PASSWORD_DEFAULT),
-                'role' => 'admin',
-                'name' => 'DIN Admin',
-                'email' => 'admin@dantworf.org',
-            ]);
-        }
-
-        $stmt = $connection->query('SELECT 1');
-        $dbStatus['ok'] = (bool) $stmt->fetchColumn();
-
-        $adminStmt = $connection->prepare('SELECT id, name, email, role, password_hash FROM users WHERE email = :email LIMIT 1');
-        $adminStmt->execute(['email' => 'admin@dantworf.org']);
-        $admin = $adminStmt->fetch(\PDO::FETCH_ASSOC);
-        if ($admin) {
-            $adminStatus['exists'] = true;
-            $adminStatus['role'] = $admin['role'] ?? null;
-            $adminStatus['password_matches_seed'] = password_verify('Admin@123', $admin['password_hash'] ?? '');
-            if ($action === 'reset_admin_password') {
-                $adminStatus['password_matches_reset'] = password_verify($resetPassword, $admin['password_hash'] ?? '');
-            }
-        }
-    } catch (Throwable $exception) {
-        $dbStatus['error'] = $exception->getMessage();
-    }
-
-    $logPath = __DIR__ . '/logs/php-error.log';
-    $logTail = '';
-    if (is_file($logPath)) {
-        $lines = @file($logPath, FILE_IGNORE_NEW_LINES);
-        if (is_array($lines)) {
-            $tail = array_slice($lines, -40);
-            $logTail = implode("\n", $tail);
-        }
-    }
-
-    echo json_encode([
-        'app_env' => Config::getAppEnv(),
-        'app_url' => Config::getAppUrl(),
-        'php_version' => PHP_VERSION,
-        'request_path' => $requestPath,
-        'action' => $action ?: null,
-        'db' => $dbStatus,
-        'admin' => $adminStatus,
-        'reset_password' => $action === 'reset_admin_password' ? $resetPassword : null,
-        'last_error_log' => $logTail,
-    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-    exit;
-}
 
 $router = new Router();
 
