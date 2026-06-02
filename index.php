@@ -105,11 +105,21 @@ if ($requestPath === '/__debug') {
 
     header('Content-Type: application/json; charset=utf-8');
     $dbStatus = ['ok' => false, 'error' => null];
+    $adminStatus = ['exists' => false, 'role' => null, 'password_matches_seed' => null];
 
     try {
         $connection = \App\Core\Database::getConnection();
         $stmt = $connection->query('SELECT 1');
         $dbStatus['ok'] = (bool) $stmt->fetchColumn();
+
+        $adminStmt = $connection->prepare('SELECT id, name, email, role, password_hash FROM users WHERE email = :email LIMIT 1');
+        $adminStmt->execute(['email' => 'admin@dantworf.org']);
+        $admin = $adminStmt->fetch(\PDO::FETCH_ASSOC);
+        if ($admin) {
+            $adminStatus['exists'] = true;
+            $adminStatus['role'] = $admin['role'] ?? null;
+            $adminStatus['password_matches_seed'] = password_verify('Admin@123', $admin['password_hash'] ?? '');
+        }
     } catch (Throwable $exception) {
         $dbStatus['error'] = $exception->getMessage();
     }
@@ -130,6 +140,7 @@ if ($requestPath === '/__debug') {
         'php_version' => PHP_VERSION,
         'request_path' => $requestPath,
         'db' => $dbStatus,
+        'admin' => $adminStatus,
         'last_error_log' => $logTail,
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     exit;
