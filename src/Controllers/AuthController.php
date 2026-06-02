@@ -17,6 +17,16 @@ class AuthController {
         require_once __DIR__ . '/../Views/auth/form.php';
     }
 
+    public function signup() {
+        Session::start();
+        if (Session::has('user_id')) {
+            $this->redirectAuthenticatedUser();
+        }
+
+        $mode = 'signup';
+        require_once __DIR__ . '/../Views/auth/form.php';
+    }
+
     public function authenticate() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: /login');
@@ -27,17 +37,21 @@ class AuthController {
             $this->flashAndRedirect('flash_error', 'Invalid CSRF token.', '/login');
         }
 
-        $email = Security::sanitizeInput($_POST['email'] ?? '');
-        $password = $_POST['password'] ?? '';
+        $email = trim((string) ($_POST['email'] ?? ''));
+        $password = (string) ($_POST['password'] ?? '');
+
+        if ($email === '' || $password === '') {
+            $this->flashAndRedirect('flash_error', 'Email and password are required.', '/login');
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->flashAndRedirect('flash_error', 'Please enter a valid email address.', '/login');
+        }
 
         $user = User::findByEmail($email);
 
         if (!$user || !password_verify($password, $user['password_hash'])) {
             $this->flashAndRedirect('flash_error', 'Invalid email or password.', '/login');
-        }
-
-        if (($user['role'] ?? 'student') !== 'admin') {
-            $this->flashAndRedirect('flash_error', 'This login is for admin access only.', '/login');
         }
 
         Session::start();
@@ -47,6 +61,54 @@ class AuthController {
         Session::set('user_name', $user['name']);
 
         $this->redirectAuthenticatedUser();
+    }
+
+    public function register() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /signup');
+            exit;
+        }
+
+        if (!Security::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
+            $this->flashAndRedirect('flash_error', 'Invalid CSRF token.', '/signup');
+        }
+
+        $name = trim((string) ($_POST['name'] ?? ''));
+        $email = trim((string) ($_POST['email'] ?? ''));
+        $password = (string) ($_POST['password'] ?? '');
+        $confirmPassword = (string) ($_POST['confirm_password'] ?? '');
+
+        if ($name === '' || $email === '' || $password === '' || $confirmPassword === '') {
+            $this->flashAndRedirect('flash_error', 'All fields are required.', '/signup');
+        }
+
+        if (strlen($name) < 2) {
+            $this->flashAndRedirect('flash_error', 'Please enter your full name.', '/signup');
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->flashAndRedirect('flash_error', 'Please enter a valid email address.', '/signup');
+        }
+
+        if (strlen($password) < 8) {
+            $this->flashAndRedirect('flash_error', 'Password must be at least 8 characters long.', '/signup');
+        }
+
+        if ($password !== $confirmPassword) {
+            $this->flashAndRedirect('flash_error', 'Passwords do not match.', '/signup');
+        }
+
+        if (User::emailExists($email)) {
+            $this->flashAndRedirect('flash_error', 'An account with that email already exists.', '/signup');
+        }
+
+        User::create($name, $email, $password, 'student');
+
+        Session::start();
+        Session::set('flash_success', 'Your account has been created. Please sign in to continue.');
+
+        header('Location: /login');
+        exit;
     }
 
     public function logout() {
@@ -69,8 +131,7 @@ class AuthController {
         if ($role === 'admin') {
             header('Location: /admin');
         } else {
-            Session::destroy();
-            header('Location: /login');
+            header('Location: /');
         }
         exit;
     }

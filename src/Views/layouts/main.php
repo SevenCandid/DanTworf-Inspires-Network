@@ -61,7 +61,8 @@
                             <button type="submit" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Logout</button>
                         </form>
                     <?php else: ?>
-                        <a href="/login" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Admin Sign In</a>
+                        <a href="/login" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Sign In</a>
+                        <a href="/signup" class="bg-secondary text-white hover:bg-green-600 px-3 py-1.5 rounded-md text-[13px] font-medium shadow transition-colors">Sign Up</a>
                     <?php endif; ?>
                 </div>
                 <!-- Mobile menu button -->
@@ -98,7 +99,8 @@
                         <button type="submit" class="text-left text-gray-500 hover:text-gray-700">Logout</button>
                     </form>
                 <?php else: ?>
-                    <a href="/login" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Admin Sign In</a>
+                    <a href="/login" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Sign In</a>
+                    <a href="/signup" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -152,7 +154,7 @@
                     <li><a href="/join" class="text-gray-400 hover:text-white transition-colors">Join Us</a></li>
                     <li><a href="/donate" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
                     <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                    <li><a href="/admin" class="text-xs text-gray-600 hover:text-gray-400">Admin Login</a></li>
+                    <li><a href="/login" class="text-xs text-gray-600 hover:text-gray-400">Sign In</a></li>
                 </ul>
             </div>
             <div>

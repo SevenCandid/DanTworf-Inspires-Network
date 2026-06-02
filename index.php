@@ -117,6 +117,10 @@ $router->post('/newsletter', 'HomeController@submitNewsletter');
 // Auth Routes
 $router->get('/login', 'AuthController@login');
 $router->post('/login', 'AuthController@authenticate');
+$router->get('/signup', 'AuthController@signup');
+$router->post('/signup', 'AuthController@register');
+$router->get('/register', 'AuthController@signup');
+$router->post('/register', 'AuthController@register');
 $router->post('/logout', 'AuthController@logout');
 
 // Admin Routes (Protected by controller constructors extending AdminBaseController)
