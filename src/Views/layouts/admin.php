@@ -40,13 +40,13 @@
     </div>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-sidebar text-white z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto">
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-sidebar text-white z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto flex flex-col">
         <div class="px-6 py-6 border-b border-gray-700">
             <h2 class="text-xl font-bold">DIN Admin</h2>
             <p class="text-gray-400 text-xs mt-1">Dashboard Panel</p>
         </div>
 
-        <nav class="mt-4 px-3 space-y-1">
+        <nav class="mt-4 px-3 space-y-1 flex-1 pb-6">
             <?php
                 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 $basePath = parse_url(\App\Config\Config::getAppUrl(), PHP_URL_PATH) ?: '';
@@ -124,12 +124,12 @@
         </nav>
 
         <!-- Sidebar Footer -->
-        <div class="absolute bottom-0 left-0 right-0 px-3 py-4 border-t border-gray-700">
-            <a href="/" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400" target="_blank">
+        <div class="mt-auto px-3 py-4 border-t border-gray-700 bg-sidebar">
+            <a href="/" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400" target="_blank" rel="noopener">
                 <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 View Website
             </a>
-            <form action="/logout" method="POST" class="mt-1">
+            <form action="/logout" method="POST" class="mt-2">
                 <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
                 <button type="submit" class="sidebar-link w-full flex items-center px-3 py-2.5 rounded-lg text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-900/20">
                     <svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
