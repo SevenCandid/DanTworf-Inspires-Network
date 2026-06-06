@@ -70,7 +70,7 @@ class Upload {
         // Generate unique filename to prevent overwriting and path traversal
         $uniqueName = uniqid() . '_' . bin2hex(random_bytes(8)) . '.' . $extension;
         
-        $uploadDir = __DIR__ . '/../../uploads/';
+        $uploadDir = __DIR__ . '/../../../storage/uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0755, true);
         }
@@ -79,7 +79,7 @@ class Upload {
 
         if (move_uploaded_file($fileArray['tmp_name'], $destination)) {
             chmod($destination, 0644); // Ensure the file is readable by the web server
-            return 'uploads/' . $uniqueName; // Return path relative to public directory
+            return 'media?path=' . $uniqueName; // Return routed path
         }
 
         Session::start();

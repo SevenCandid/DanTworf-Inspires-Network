@@ -108,6 +108,7 @@ $router->get('/resources', 'HomeController@resources');
 $router->get('/blogs', 'HomeController@blogs');
 $router->get('/join', 'HomeController@join');
 $router->post('/join', 'HomeController@submitJoin');
+$router->get('/media', 'MediaController@serve');
 $router->post('/volunteer', 'HomeController@submitVolunteer');
 $router->get('/donate', 'HomeController@donate');
 $router->post('/donate', 'HomeController@submitDonate');

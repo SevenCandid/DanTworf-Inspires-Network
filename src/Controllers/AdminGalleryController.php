@@ -54,7 +54,14 @@ class AdminGalleryController extends AdminBaseController {
                 $item = Gallery::getById($id);
                 if ($item) {
                     // Try to delete physical file
-                    $filepath = __DIR__ . '/../../' . $item['file_path'];
+                    $dbPath = $item['file_path'];
+                    if (strpos($dbPath, 'media?path=') === 0) {
+                        $filename = str_replace('media?path=', '', $dbPath);
+                        $filepath = __DIR__ . '/../../../storage/uploads/' . basename($filename);
+                    } else {
+                        // Legacy path
+                        $filepath = __DIR__ . '/../../' . $dbPath;
+                    }
                     if (file_exists($filepath)) {
                         unlink($filepath);
                     }

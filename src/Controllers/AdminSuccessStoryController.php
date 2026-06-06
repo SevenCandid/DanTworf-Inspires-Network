@@ -80,6 +80,20 @@ class AdminSuccessStoryController extends AdminBaseController {
             }
             $id = (int)($_POST['id'] ?? 0);
             if ($id) {
+                $story = SuccessStory::getById($id);
+                if ($story && !empty($story['image_path'])) {
+                    $dbPath = $story['image_path'];
+                    if (strpos($dbPath, 'media?path=') === 0) {
+                        $filename = str_replace('media?path=', '', $dbPath);
+                        $filepath = __DIR__ . '/../../../storage/uploads/' . basename($filename);
+                    } else {
+                        // Legacy path
+                        $filepath = __DIR__ . '/../../' . $dbPath;
+                    }
+                    if (file_exists($filepath)) {
+                        unlink($filepath);
+                    }
+                }
                 SuccessStory::delete($id);
                 Session::set('flash_success', 'Success story deleted.');
             }
