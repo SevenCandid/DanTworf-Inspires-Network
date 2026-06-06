@@ -64,7 +64,7 @@
                             </div>
                             
                             <div class="prose prose-blue prose-lg max-w-none text-gray-700 leading-relaxed">
-                                <?= nl2br(htmlspecialchars($blog['content'])) ?>
+                                <?= $blog['content'] ?>
                             </div>
                         </div>
                     </div>
