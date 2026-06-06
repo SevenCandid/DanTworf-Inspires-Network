@@ -14,11 +14,11 @@ $completedCount = count(array_filter($donations, fn($d) => ($d['status'] ?? '') 
 </div>
 
 <!-- Summary Cards -->
-<div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
-        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Received">Total Received</p>
-        <p class="text-base sm:text-3xl font-extrabold text-secondary mt-1 truncate">₵<?= number_format($totalAmount, 2) ?></p>
-        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">Across all donations</p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6 col-span-2 sm:col-span-1">
+        <p class="text-[10px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Received">Total Received</p>
+        <p class="text-xl sm:text-3xl font-extrabold text-secondary mt-1 truncate">₵<?= number_format($totalAmount, 2) ?></p>
+        <p class="text-[9px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">Across all donations</p>
     </div>
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
         <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Donors">Total Donors</p>
