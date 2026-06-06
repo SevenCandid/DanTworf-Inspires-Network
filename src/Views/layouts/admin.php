@@ -141,11 +141,11 @@
 
     <!-- Main Content -->
     <main class="md:ml-64 pt-14 md:pt-0 min-h-screen flex flex-col">
-        <!-- Top Bar (sticky on all screen sizes) -->
-        <div class="bg-white shadow-sm border-b border-gray-200 px-4 md:px-6 py-3 flex items-center justify-between sticky top-0 z-30">
-            <h1 class="text-base md:text-lg font-semibold text-gray-800 hidden sm:block">Admin Panel</h1>
+        <!-- Top Bar (sticky, desktop only — mobile has the fixed top bar above) -->
+        <div class="hidden md:flex bg-white shadow-sm border-b border-gray-200 px-4 md:px-6 py-3 items-center justify-between sticky top-0 z-30">
+            <h1 class="text-base md:text-lg font-semibold text-gray-800">Admin Panel</h1>
             <div class="flex items-center space-x-3 ml-auto">
-                <span class="text-sm text-gray-500 hidden md:inline-block">Welcome, <?= htmlspecialchars(\App\Core\Session::get('user_name') ?? 'Admin') ?></span>
+                <span class="text-sm text-gray-500"><?= htmlspecialchars(\App\Core\Session::get('user_name') ?? 'Admin') ?></span>
                 <div class="h-8 w-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">
                     <?= strtoupper(substr(\App\Core\Session::get('user_name') ?? 'A', 0, 1)) ?>
                 </div>

@@ -7,58 +7,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.getElementById('mobile-menu');
     const nav  = document.querySelector('nav');
 
-    if (btn && menu) {
-        let isMenuOpen = false;
+    function closeMenu() {
+        menu.classList.remove('menu-open');
+        menu.classList.add('menu-closing');
+        btn.classList.remove('menu-is-open');
+        document.body.style.overflow = '';   // unlock page scroll
+        menu.addEventListener('animationend', () => {
+            menu.classList.remove('menu-closing');
+        }, { once: true });
+        isMenuOpen = false;
+    }
 
+    let isMenuOpen = false;
+
+    if (btn && menu) {
+        // Hamburger button click
         btn.addEventListener('click', () => {
             if (!isMenuOpen) {
-                // OPEN
                 menu.classList.remove('menu-closing');
                 menu.classList.add('menu-open');
-                btn.classList.add('menu-is-open');   // triggers ham→X animation
+                btn.classList.add('menu-is-open');
                 document.body.style.overflow = 'hidden'; // lock page scroll
                 isMenuOpen = true;
             } else {
-                // CLOSE: play slide-up, then truly hide
-                menu.classList.remove('menu-open');
-                menu.classList.add('menu-closing');
-                btn.classList.remove('menu-is-open');
-                document.body.style.overflow = ''; // restore page scroll
-                menu.addEventListener('animationend', () => {
-                    menu.classList.remove('menu-closing');
-                }, { once: true });
-                isMenuOpen = false;
+                closeMenu();
             }
         });
 
-        // Close menu when a link is tapped
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) {
-                    menu.classList.remove('menu-open');
-                    menu.classList.add('menu-closing');
-                    btn.classList.remove('menu-is-open');
-                    document.body.style.overflow = ''; // restore page scroll
-                    menu.addEventListener('animationend', () => {
-                        menu.classList.remove('menu-closing');
-                    }, { once: true });
-                    isMenuOpen = false;
-                }
-            });
+        // ── Close on link tap using EVENT DELEGATION (works on dynamic content) ──
+        // We listen on the menu CONTAINER, not each individual link
+        menu.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (link && isMenuOpen) {
+                closeMenu();
+                // Small delay lets animation start before browser navigates
+                // (only needed for same-page anchors; regular hrefs are fine)
+            }
         });
     }
 
     // ─── Scroll-aware navbar shadow ──────────────────────────────────────────
     if (nav) {
         const onScroll = () => {
-            if (window.scrollY > 10) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            nav.classList.toggle('scrolled', window.scrollY > 10);
         };
         window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll(); // run on load
+        onScroll();
     }
 
     // ─── Auto-dismiss flash messages after 5 seconds ─────────────────────────
@@ -71,4 +65,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
