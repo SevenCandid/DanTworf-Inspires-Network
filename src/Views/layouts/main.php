@@ -185,7 +185,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-            &copy; <?= date('Y') ?> DANTWORF INSPIRES NETWORK. All rights reserved. | Powered by <a href="#" class="text-gray-400 hover:text-white font-semibold transition-colors">VeroSeven</a>
+            &copy; <?= date('Y') ?> DANTWORF INSPIRES NETWORK. All rights reserved. | Powered by <a href="#" class="text-yellow-500 hover:text-yellow-400 font-semibold transition-colors">VeroSeven</a>
         </div>
     </footer>
 
