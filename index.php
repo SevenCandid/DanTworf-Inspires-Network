@@ -175,6 +175,9 @@ $router->get('/admin/donations/export', 'AdminDataController@exportDonations');
 $router->get('/admin/subscribers', 'AdminDataController@subscribers');
 $router->get('/admin/subscribers/export', 'AdminDataController@exportSubscribers');
 
+// Admin API (JSON)
+$router->get('/admin/api/stats', 'AdminApiController@stats');
+
 // Dispatch request
 $uri = $requestPath;
 $method = $_SERVER['REQUEST_METHOD'];

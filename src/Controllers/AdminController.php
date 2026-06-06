@@ -11,12 +11,13 @@ class AdminController extends AdminBaseController {
     public function dashboard() {
         $stats = [
             'opportunities' => \App\Models\Opportunity::count(),
-            'messages' => \App\Models\ContactMessage::count(),
-            'volunteers' => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM volunteers")->fetchColumn(),
-            'donations' => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM donations")->fetchColumn(),
-            'subscribers' => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM newsletter_subscribers")->fetchColumn(),
-            'events' => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM events")->fetchColumn(),
-            'blogs' => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM blogs")->fetchColumn()
+            'messages'      => \App\Models\ContactMessage::count(),
+            'unread'        => (int) \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM contact_messages WHERE status = 'unread'")->fetchColumn(),
+            'volunteers'    => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM volunteers")->fetchColumn(),
+            'donations'     => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM donations")->fetchColumn(),
+            'subscribers'   => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM newsletter_subscribers")->fetchColumn(),
+            'events'        => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM events")->fetchColumn(),
+            'blogs'         => \App\Core\Database::getConnection()->query("SELECT COUNT(*) FROM blogs")->fetchColumn()
         ];
         $recent_messages = \App\Models\ContactMessage::getLatest(5);
         require_once __DIR__ . '/../Views/admin/dashboard.php';
