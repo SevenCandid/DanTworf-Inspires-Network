@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 menu.classList.remove('menu-closing');
                 menu.classList.add('menu-open');
                 btn.classList.add('menu-is-open');   // triggers ham→X animation
+                document.body.style.overflow = 'hidden'; // lock page scroll
                 isMenuOpen = true;
             } else {
                 // CLOSE: play slide-up, then truly hide
                 menu.classList.remove('menu-open');
                 menu.classList.add('menu-closing');
                 btn.classList.remove('menu-is-open');
+                document.body.style.overflow = ''; // restore page scroll
                 menu.addEventListener('animationend', () => {
                     menu.classList.remove('menu-closing');
                 }, { once: true });
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     menu.classList.remove('menu-open');
                     menu.classList.add('menu-closing');
                     btn.classList.remove('menu-is-open');
+                    document.body.style.overflow = ''; // restore page scroll
                     menu.addEventListener('animationend', () => {
                         menu.classList.remove('menu-closing');
                     }, { once: true });

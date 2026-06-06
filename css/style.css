@@ -48,8 +48,12 @@ html {
 #mobile-menu {
     display: none;
     overflow: hidden;
+}
+
+#mobile-menu > div {
     overflow-y: auto;
-    max-height: 85vh; /* scrollable if too many items */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    max-height: calc(100vh - 64px);    /* never taller than viewport minus the navbar */
 }
 
 #mobile-menu.menu-open {
