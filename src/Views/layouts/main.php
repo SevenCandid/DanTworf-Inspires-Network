@@ -24,7 +24,7 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/assets/favicon.jpg">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=<?= time() ?>">
     <style>
         /* Hamburger -> X icon transition */
         .ham-bar { transform-origin: center; transition: transform 0.3s ease, opacity 0.3s ease; display: block; }
@@ -189,7 +189,7 @@
         </div>
     </footer>
 
-    <script src="/js/app.js"></script>
+    <script src="/js/app.js?v=<?= time() ?>"></script>
 </body>
 </html>
 
