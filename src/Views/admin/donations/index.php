@@ -14,20 +14,20 @@ $completedCount = count(array_filter($donations, fn($d) => ($d['status'] ?? '') 
 </div>
 
 <!-- Summary Cards -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Received</p>
-        <p class="text-3xl font-extrabold text-secondary mt-1">$<?= number_format($totalAmount, 2) ?></p>
+<div class="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
+        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Received</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-secondary mt-1">₵<?= number_format($totalAmount, 2) ?></p>
         <p class="text-xs text-gray-400 mt-1">Across all donations</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Donors</p>
-        <p class="text-3xl font-extrabold text-primary mt-1"><?= count($donations) ?></p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
+        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Donors</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-primary mt-1"><?= count($donations) ?></p>
         <p class="text-xs text-gray-400 mt-1">All-time entries</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Completed</p>
-        <p class="text-3xl font-extrabold text-gray-900 mt-1"><?= $completedCount ?></p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
+        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Completed</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1"><?= $completedCount ?></p>
         <p class="text-xs text-gray-400 mt-1">Verified transactions</p>
     </div>
 </div>
@@ -60,7 +60,7 @@ $completedCount = count(array_filter($donations, fn($d) => ($d['status'] ?? '') 
                             <div class='grid grid-cols-2 gap-4'>
                                 <div class='bg-green-50 rounded-lg p-3 text-center'>
                                     <p class='text-xs text-gray-500 mb-1'>Amount</p>
-                                    <p class='text-2xl font-extrabold text-secondary'>$<?= number_format($donation['amount'], 2) ?></p>
+                                    <p class='text-2xl font-extrabold text-secondary'>₵<?= number_format($donation['amount'], 2) ?></p>
                                 </div>
                                 <div class='bg-gray-50 rounded-lg p-3 text-center'>
                                     <p class='text-xs text-gray-500 mb-1'>Status</p>
@@ -80,7 +80,7 @@ $completedCount = count(array_filter($donations, fn($d) => ($d['status'] ?? '') 
                             </div>
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($donation['email']) ?></td>
-                        <td class="px-6 py-4 text-sm font-bold text-secondary">$<?= number_format($donation['amount'], 2) ?></td>
+                        <td class="px-6 py-4 text-sm font-bold text-secondary">₵<?= number_format($donation['amount'], 2) ?></td>
                         <td class="px-6 py-4 text-sm text-gray-500"><?= htmlspecialchars($donation['payment_method'] ?? 'N/A') ?></td>
                         <td class="px-6 py-4">
                             <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 

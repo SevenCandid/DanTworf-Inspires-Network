@@ -14,20 +14,20 @@ $thisMonthCount = count(array_filter($subscribers, fn($s) => date('Y-m', strtoti
 </div>
 
 <!-- Summary Cards -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Subscribers</p>
-        <p class="text-3xl font-extrabold text-primary mt-1"><?= count($subscribers) ?></p>
+<div class="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
+        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Subscribers</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-primary mt-1"><?= count($subscribers) ?></p>
         <p class="text-xs text-gray-400 mt-1">All time</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">This Month</p>
-        <p class="text-3xl font-extrabold text-secondary mt-1"><?= $thisMonthCount ?></p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
+        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">This Month</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-secondary mt-1"><?= $thisMonthCount ?></p>
         <p class="text-xs text-gray-400 mt-1"><?= date('F Y') ?></p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Latest Subscriber</p>
-        <p class="text-base font-bold text-gray-900 mt-1 truncate"><?= $latestSubscriber ? htmlspecialchars($latestSubscriber['email']) : 'None yet' ?></p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
+        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Latest Subscriber</p>
+        <p class="text-xs sm:text-base font-bold text-gray-900 mt-1 truncate"><?= $latestSubscriber ? htmlspecialchars($latestSubscriber['email']) : 'None yet' ?></p>
         <p class="text-xs text-gray-400 mt-1"><?= $latestSubscriber ? date('M d, Y', strtotime($latestSubscriber['created_at'])) : '—' ?></p>
     </div>
 </div>
