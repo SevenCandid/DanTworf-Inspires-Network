@@ -2,8 +2,8 @@
 
 <div class="bg-white py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-7xl mx-auto text-center mb-16">
-        <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">Events & News</h1>
-        <p class="text-lg sm:text-base sm:text-xl$3">Stay up to date with the latest DIN events, workshops, and public updates.</p>
+        <h1 class="text-3xl sm:text-2xl sm:text-4xl">Events & News</h1>
+        <p class="text-lg sm:text-base sm:text-xl">Stay up to date with the latest DIN events, workshops, and public updates.</p>
     </div>
 
     <div class="max-w-7xl mx-auto">
@@ -22,7 +22,7 @@
                                     <p class="text-xs font-semibold uppercase tracking-[0.3em] <?= $isUpcoming ? 'text-secondary' : 'text-gray-400' ?>">
                                         <?= $isUpcoming ? 'Upcoming' : 'Past Event' ?>
                                     </p>
-                                    <h2 class="mt-2 text-base sm:text-xl$3"><?= htmlspecialchars($event['title']) ?></h2>
+                                    <h2 class="mt-2 text-base sm:text-xl"><?= htmlspecialchars($event['title']) ?></h2>
                                 </div>
                                 <div class="flex-shrink-0 rounded-xl bg-primary text-white text-center px-3 py-2 min-w-16">
                                     <span class="block text-xs font-bold uppercase"><?= date('M', $eventDate) ?></span>
@@ -49,14 +49,14 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="col-span-full rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-6 py-12 text-center">
-                    <h2 class="text-lg sm:text-base sm:text-xl$3">No events posted yet</h2>
+                    <h2 class="text-lg sm:text-base sm:text-xl">No events posted yet</h2>
                     <p class="mt-2 text-gray-500">Check back soon for upcoming DIN events and announcements.</p>
                 </div>
             <?php endif; ?>
         </div>
 
         <div class="mt-12 bg-blue-50 rounded-2xl p-6 sm:p-8 text-center border border-blue-100">
-            <h3 class="text-lg sm:text-base sm:text-xl$3">Want to host an event with us?</h3>
+            <h3 class="text-lg sm:text-base sm:text-xl">Want to host an event with us?</h3>
             <p class="text-sm sm:text-base text-gray-600 mb-4 max-w-2xl mx-auto">Partner with DIN to reach ambitious young people through workshops, talks, and community programs.</p>
             <a href="/contact" class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-blue-800 transition-colors">Partner With Us</a>
         </div>
@@ -67,5 +67,6 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
 
 

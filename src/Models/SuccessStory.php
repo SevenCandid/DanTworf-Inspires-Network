@@ -9,14 +9,24 @@ class SuccessStory {
     public static function getAll() {
         $db = Database::getConnection();
         $stmt = $db->query("SELECT * FROM success_stories ORDER BY created_at DESC");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($results as &$row) {
+            if (!empty($row['image_path']) && (str_starts_with($row['image_path'], 'uploads/') || str_starts_with($row['image_path'], '/uploads/'))) {
+                $row['image_path'] = '/media?path=' . ltrim($row['image_path'], '/');
+            }
+        }
+        return $results;
     }
 
     public static function getById($id) {
         $db = Database::getConnection();
         $stmt = $db->prepare("SELECT * FROM success_stories WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row && !empty($row['image_path']) && (str_starts_with($row['image_path'], 'uploads/') || str_starts_with($row['image_path'], '/uploads/'))) {
+            $row['image_path'] = '/media?path=' . ltrim($row['image_path'], '/');
+        }
+        return $row;
     }
 
     public static function create($name, $headline, $content, $imagePath) {

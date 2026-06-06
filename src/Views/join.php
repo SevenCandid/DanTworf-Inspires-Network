@@ -2,8 +2,8 @@
 
 <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-7xl mx-auto text-center mb-12">
-        <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">Join Us</h1>
-        <p class="text-lg sm:text-base sm:text-xl$3">Become a part of the DIN family. Whether you want to join as a member to access exclusive benefits, or volunteer your skills to help others, we welcome you.</p>
+        <h1 class="text-3xl sm:text-2xl sm:text-4xl">Join Us</h1>
+        <p class="text-lg sm:text-base sm:text-xl">Become a part of the DIN family. Whether you want to join as a member to access exclusive benefits, or volunteer your skills to help others, we welcome you.</p>
     </div>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -98,6 +98,7 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
 
 
 

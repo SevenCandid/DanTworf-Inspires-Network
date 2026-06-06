@@ -2,8 +2,8 @@
 
 <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-7xl mx-auto text-center mb-16">
-        <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">Media Gallery</h1>
-        <p class="text-lg sm:text-base sm:text-xl$3">Explore photos and videos from our past events, workshops, and outreach programs.</p>
+        <h1 class="text-3xl sm:text-2xl sm:text-4xl">Media Gallery</h1>
+        <p class="text-lg sm:text-base sm:text-xl">Explore photos and videos from our past events, workshops, and outreach programs.</p>
     </div>
 
     <?php
@@ -69,5 +69,6 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
 
 
