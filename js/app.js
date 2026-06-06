@@ -6,8 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.getElementById('mobile-menu');
 
     if (btn && menu) {
+        let isMenuOpen = false;
         btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                menu.classList.remove('max-h-0', 'opacity-0');
+                menu.classList.add('max-h-[500px]', 'opacity-100'); // max-h big enough to hold content
+            } else {
+                menu.classList.remove('max-h-[500px]', 'opacity-100');
+                menu.classList.add('max-h-0', 'opacity-0');
+            }
         });
     }
 

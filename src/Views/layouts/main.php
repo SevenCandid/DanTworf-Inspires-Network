@@ -37,7 +37,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap items-center justify-between gap-3 py-3">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="/" class="text-xl font-bold text-primary tracking-tight">DIN</a>
+                    <a href="/" class="flex items-center">
+                        <img src="/assets/din-logo-png.png" alt="DIN Logo" class="h-12 w-auto">
+                    </a>
                 </div>
                 <!-- Desktop Nav -->
                 <div class="hidden xl:flex flex-1 min-w-0 flex-wrap items-center justify-end gap-x-1 gap-y-2">
@@ -66,8 +68,8 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="xl:hidden hidden" id="mobile-menu">
-            <div class="pt-2 pb-3 space-y-1">
+        <div class="xl:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
                 <a href="/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Home</a>
                 <a href="/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">About Us</a>
                 <a href="/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Programs</a>
@@ -145,7 +147,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-            &copy; <?= date('Y') ?> DANTWORF INSPIRES NETWORK. All rights reserved.
+            &copy; <?= date('Y') ?> DANTWORF INSPIRES NETWORK. All rights reserved. | Powered by <a href="#" class="text-gray-400 hover:text-white font-semibold transition-colors">VeroSeven</a>
         </div>
     </footer>
 

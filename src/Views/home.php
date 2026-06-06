@@ -28,10 +28,25 @@
             </main>
         </div>
     </div>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-200 animate-pulse flex items-center justify-center">
-        <span class="text-gray-400 font-semibold text-xl">Hero Image Placeholder</span>
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 relative h-64 sm:h-80 md:h-96 lg:h-full overflow-hidden bg-gray-200">
+        <img src="/assets/hero-1.png" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" data-hero-slide>
+        <img src="/assets/hero-2.png" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" data-hero-slide>
+        <img src="/assets/hero-3.png" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" data-hero-slide>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('[data-hero-slide]');
+        if(slides.length === 0) return;
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+        }, 4000);
+    });
+</script>
 
 <!-- Impact Statistics Section -->
 <div class="bg-white pt-12 sm:pt-16">
@@ -48,18 +63,18 @@
             <div class="absolute inset-0 h-1/2 bg-white"></div>
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto">
-                    <dl class="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
-                        <div class="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
-                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">Students Supported</dt>
-                            <dd class="order-1 text-5xl font-extrabold text-primary">5,000+</dd>
+                    <dl class="rounded-xl bg-white shadow-lg grid grid-cols-3 divide-x divide-gray-100 overflow-hidden">
+                        <div class="flex flex-col p-3 sm:p-6 text-center">
+                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-lg leading-tight font-medium text-gray-500 uppercase sm:capitalize">Students</dt>
+                            <dd class="order-1 text-xl sm:text-5xl font-extrabold text-primary">5,000+</dd>
                         </div>
-                        <div class="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
-                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">Scholarships Awarded</dt>
-                            <dd class="order-1 text-5xl font-extrabold text-secondary">200+</dd>
+                        <div class="flex flex-col p-3 sm:p-6 text-center">
+                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-lg leading-tight font-medium text-gray-500 uppercase sm:capitalize">Scholarships</dt>
+                            <dd class="order-1 text-xl sm:text-5xl font-extrabold text-secondary">200+</dd>
                         </div>
-                        <div class="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
-                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">Active Mentors</dt>
-                            <dd class="order-1 text-5xl font-extrabold text-primary">150+</dd>
+                        <div class="flex flex-col p-3 sm:p-6 text-center">
+                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-lg leading-tight font-medium text-gray-500 uppercase sm:capitalize">Mentors</dt>
+                            <dd class="order-1 text-xl sm:text-5xl font-extrabold text-primary">150+</dd>
                         </div>
                     </dl>
                 </div>
