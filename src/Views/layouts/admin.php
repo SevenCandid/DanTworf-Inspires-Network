@@ -32,9 +32,9 @@
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Mobile Sidebar Toggle -->
-    <div class="md:hidden fixed top-0 left-0 right-0 bg-sidebar text-white flex items-center justify-between px-4 py-3 z-50">
-        <span class="font-bold text-lg">DIN Admin</span>
-        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="text-white focus:outline-none">
+    <div class="md:hidden fixed top-0 left-0 right-0 bg-sidebar text-white flex items-center justify-between px-4 py-3 z-50 shadow-lg">
+        <span class="font-bold text-base tracking-wide">DIN Admin</span>
+        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="text-white focus:outline-none p-1 rounded-lg hover:bg-white/10 transition-colors">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
     </div>
@@ -140,12 +140,12 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="md:ml-64 pt-14 md:pt-0 min-h-screen">
-        <!-- Top Bar -->
-        <div class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-            <h1 class="text-xl font-semibold text-gray-800 hidden sm:block">Admin Dashboard</h1>
+    <main class="md:ml-64 pt-14 md:pt-0 min-h-screen flex flex-col">
+        <!-- Top Bar (sticky on all screen sizes) -->
+        <div class="bg-white shadow-sm border-b border-gray-200 px-4 md:px-6 py-3 flex items-center justify-between sticky top-0 z-30">
+            <h1 class="text-base md:text-lg font-semibold text-gray-800 hidden sm:block">Admin Panel</h1>
             <div class="flex items-center space-x-3 ml-auto">
-                <span class="text-sm text-gray-500 hidden sm:inline-block">Welcome, <?= htmlspecialchars(\App\Core\Session::get('user_name') ?? 'Admin') ?></span>
+                <span class="text-sm text-gray-500 hidden md:inline-block">Welcome, <?= htmlspecialchars(\App\Core\Session::get('user_name') ?? 'Admin') ?></span>
                 <div class="h-8 w-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">
                     <?= strtoupper(substr(\App\Core\Session::get('user_name') ?? 'A', 0, 1)) ?>
                 </div>

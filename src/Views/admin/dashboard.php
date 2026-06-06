@@ -1,57 +1,57 @@
 <?php ob_start(); ?>
 
 <!-- Stats Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between">
+<div class="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm p-3 sm:p-6 border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-                <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Opportunities</p>
-                <p class="mt-2 text-3xl font-bold text-gray-900"><?= $stats['opportunities'] ?></p>
+                <p class="text-[10px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wide leading-tight">Opps</p>
+                <p class="mt-1 text-2xl sm:text-3xl font-bold text-gray-900"><?= $stats['opportunities'] ?></p>
             </div>
-            <div class="h-12 w-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <div class="h-8 w-8 sm:h-12 sm:w-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="h-4 w-4 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
         </div>
-        <a href="/admin/opportunities" class="mt-4 inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
+        <a href="/admin/opportunities" class="mt-3 hidden sm:inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
     </div>
 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between">
+    <div class="bg-white rounded-xl shadow-sm p-3 sm:p-6 border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-                <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Events</p>
-                <p class="mt-2 text-3xl font-bold text-gray-900"><?= $stats['events'] ?></p>
+                <p class="text-[10px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wide leading-tight">Events</p>
+                <p class="mt-1 text-2xl sm:text-3xl font-bold text-gray-900"><?= $stats['events'] ?></p>
             </div>
-            <div class="h-12 w-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <div class="h-8 w-8 sm:h-12 sm:w-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="h-4 w-4 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </div>
         </div>
-        <a href="/admin/events" class="mt-4 inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
+        <a href="/admin/events" class="mt-3 hidden sm:inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
     </div>
 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between">
+    <div class="bg-white rounded-xl shadow-sm p-3 sm:p-6 border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-                <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Donations</p>
-                <p class="mt-2 text-3xl font-bold text-gray-900"><?= $stats['donations'] ?></p>
+                <p class="text-[10px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wide leading-tight">Donations</p>
+                <p class="mt-1 text-2xl sm:text-3xl font-bold text-gray-900"><?= $stats['donations'] ?></p>
             </div>
-            <div class="h-12 w-12 bg-green-100 text-secondary rounded-lg flex items-center justify-center">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div class="h-8 w-8 sm:h-12 sm:w-12 bg-green-100 text-secondary rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="h-4 w-4 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
         </div>
-        <a href="/admin/donations" class="mt-4 inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
+        <a href="/admin/donations" class="mt-3 hidden sm:inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
     </div>
 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between">
+    <div class="bg-white rounded-xl shadow-sm p-3 sm:p-6 border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-                <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Subscribers</p>
-                <p class="mt-2 text-3xl font-bold text-gray-900"><?= $stats['subscribers'] ?></p>
+                <p class="text-[10px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wide leading-tight">Subscribers</p>
+                <p class="mt-1 text-2xl sm:text-3xl font-bold text-gray-900"><?= $stats['subscribers'] ?></p>
             </div>
-            <div class="h-12 w-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <div class="h-8 w-8 sm:h-12 sm:w-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="h-4 w-4 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
         </div>
-        <a href="/admin/subscribers" class="mt-4 inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
+        <a href="/admin/subscribers" class="mt-3 hidden sm:inline-flex px-4 py-1.5 bg-gray-50 text-xs text-primary font-medium rounded-full hover:bg-blue-50 transition-colors border border-gray-100">View all &rarr;</a>
     </div>
 </div>
 

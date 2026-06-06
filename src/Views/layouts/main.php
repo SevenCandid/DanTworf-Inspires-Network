@@ -25,6 +25,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="/assets/favicon.jpg">
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Hamburger -> X icon transition */
+        .ham-bar { transform-origin: center; transition: transform 0.3s ease, opacity 0.3s ease; display: block; }
+        .menu-is-open .ham-bar-top    { transform: translateY(6px) rotate(45deg); }
+        .menu-is-open .ham-bar-mid    { opacity: 0; transform: scaleX(0); }
+        .menu-is-open .ham-bar-bottom { transform: translateY(-6px) rotate(-45deg); }
+
+        /* Mobile menu item stagger animation */
+        @keyframes menuItemIn {
+            from { opacity: 0; transform: translateX(-16px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        #mobile-menu.menu-open a,
+        #mobile-menu.menu-open .menu-actions {
+            animation: menuItemIn 0.25s ease forwards;
+            opacity: 0;
+        }
+        #mobile-menu.menu-open a:nth-child(1)  { animation-delay: 0.03s; }
+        #mobile-menu.menu-open a:nth-child(2)  { animation-delay: 0.06s; }
+        #mobile-menu.menu-open a:nth-child(3)  { animation-delay: 0.09s; }
+        #mobile-menu.menu-open a:nth-child(4)  { animation-delay: 0.12s; }
+        #mobile-menu.menu-open a:nth-child(5)  { animation-delay: 0.15s; }
+        #mobile-menu.menu-open a:nth-child(6)  { animation-delay: 0.18s; }
+        #mobile-menu.menu-open a:nth-child(7)  { animation-delay: 0.21s; }
+        #mobile-menu.menu-open a:nth-child(8)  { animation-delay: 0.24s; }
+        #mobile-menu.menu-open a:nth-child(9)  { animation-delay: 0.27s; }
+        #mobile-menu.menu-open a:nth-child(10) { animation-delay: 0.30s; }
+        #mobile-menu.menu-open a:nth-child(11) { animation-delay: 0.33s; }
+        #mobile-menu.menu-open .menu-actions   { animation-delay: 0.36s; }
+
+        /* Navbar scroll shadow */
+        nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
     <?php
@@ -57,12 +90,13 @@
                     <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-4 py-1.5 rounded-full text-[13px] font-medium shadow transition-colors">Donate</a>
                     <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-4 py-1.5 rounded-full text-[13px] font-medium shadow transition-colors">Contact</a>
                 </div>
-                <!-- Mobile menu button -->
+                <!-- Mobile menu button with hamburger → X animation -->
                 <div class="-mr-2 flex items-center xl:hidden">
-                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <button type="button" id="mobile-menu-btn" aria-label="Toggle menu" class="inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <line x1="4" y1="7"  x2="20" y2="7"  class="ham-bar ham-bar-top"/>
+                            <line x1="4" y1="12" x2="20" y2="12" class="ham-bar ham-bar-mid"/>
+                            <line x1="4" y1="17" x2="20" y2="17" class="ham-bar ham-bar-bottom"/>
                         </svg>
                     </button>
                 </div>
@@ -70,19 +104,22 @@
         </div>
         <!-- Mobile Menu -->
         <div class="xl:hidden" id="mobile-menu">
-            <div class="pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
-                <a href="/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Home</a>
-                <a href="/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">About Us</a>
-                <a href="/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Programs</a>
-                <a href="/opportunities" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Opportunities</a>
-                <a href="/success-stories" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Success Stories</a>
-                <a href="/blogs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Blog Articles</a>
-                <a href="/events" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Events & News</a>
-                <a href="/gallery" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Gallery</a>
-                <a href="/resources" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Resources</a>
-                <a href="/join" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Join Us</a>
-                <a href="/donate" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Donate</a>
-                <a href="/contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Contact Us</a>
+            <div class="py-3 space-y-0.5 bg-white border-t border-gray-100 px-3">
+                <a href="/" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-semibold text-primary bg-primary/5 border-l-4 border-primary">Home</a>
+                <a href="/about" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">About Us</a>
+                <a href="/programs" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Programs</a>
+                <a href="/opportunities" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Opportunities</a>
+                <a href="/success-stories" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Success Stories</a>
+                <a href="/blogs" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Blog Articles</a>
+                <a href="/events" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Events &amp; News</a>
+                <a href="/gallery" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Gallery</a>
+                <a href="/resources" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Resources</a>
+                <a href="/contact" class="flex items-center pl-3 pr-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 border-l-4 border-transparent transition-colors">Contact Us</a>
+                <!-- CTA buttons at the bottom -->
+                <div class="menu-actions pt-3 pb-1 flex gap-3">
+                    <a href="/join" class="flex-1 text-center py-2.5 rounded-full text-sm font-bold text-white bg-secondary hover:bg-green-600 transition-colors shadow-sm">Join Now</a>
+                    <a href="/donate" class="flex-1 text-center py-2.5 rounded-full text-sm font-bold text-white bg-primary hover:bg-blue-800 transition-colors shadow-sm">Donate</a>
+                </div>
             </div>
         </div>
     </nav>
