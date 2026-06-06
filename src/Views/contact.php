@@ -21,7 +21,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-lg font-medium text-gray-900">Email Us</h3>
-                            <p class="text-gray-500">info@dantworfinspires.org</p>
+                            <p class="text-gray-500"><a href="mailto:Scholarship325@gmail.com" class="hover:text-primary transition-colors">Scholarship325@gmail.com</a></p>
                         </div>
                     </div>
                     

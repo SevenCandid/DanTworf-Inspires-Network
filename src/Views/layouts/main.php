@@ -68,7 +68,7 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="xl:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0" id="mobile-menu">
+        <div class="xl:hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
                 <a href="/" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Home</a>
                 <a href="/about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">About Us</a>
