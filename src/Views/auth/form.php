@@ -1,24 +1,12 @@
 <?php
 use App\Core\Session;
 
-$mode = $mode ?? 'login';
-$isSignup = $mode === 'signup';
-
-$title = $isSignup ? 'Create your account' : 'Sign in';
-$subtitle = $isSignup
-    ? 'Create your DIN account now. OTP verification will be added in the next phase.'
-    : 'Sign in to continue to the site and the admin dashboard when your role allows it.';
-$action = $isSignup ? '/signup' : '/login';
-$buttonLabel = $isSignup ? 'Create Account' : 'Sign In';
-$heroTitle = $isSignup
-    ? 'Set up your access in a few steps.'
-    : 'Welcome back to the DIN portal.';
-$heroText = $isSignup
-    ? 'Register your account now and we will layer OTP verification on top later.'
-    : 'Use secure credentials to continue where you left off.';
-$switchText = $isSignup ? 'Already have an account?' : 'Need an account?';
-$switchLink = $isSignup ? '/login' : '/signup';
-$switchLabel = $isSignup ? 'Sign in' : 'Sign up';
+$title = 'Admin Sign In';
+$subtitle = 'Use your site management credentials to access the DIN dashboard.';
+$action = '/login';
+$buttonLabel = 'Sign In';
+$heroTitle = 'Manage the site from one secure dashboard.';
+$heroText = 'Sign in with your admin credentials to manage pages, content, and submissions.';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,11 +49,11 @@ $switchLabel = $isSignup ? 'Sign in' : 'Sign up';
             <div class="grid grid-cols-2 gap-4 text-sm">
                 <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
                     <p class="text-blue-100/70">Security</p>
-                    <p class="mt-1 font-semibold">Password-protected access</p>
+                    <p class="mt-1 font-semibold">Hashed passwords</p>
                 </div>
                 <div class="rounded-2xl bg-white/10 p-4 border border-white/10">
-                    <p class="text-blue-100/70">Flow</p>
-                    <p class="mt-1 font-semibold">OTP ready later</p>
+                    <p class="text-blue-100/70">Control</p>
+                    <p class="mt-1 font-semibold">Dashboard access only</p>
                 </div>
             </div>
         </div>
@@ -95,13 +83,6 @@ $switchLabel = $isSignup ? 'Sign in' : 'Sign up';
                 <form action="<?= $action ?>" method="POST" class="space-y-5">
                     <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
 
-                    <?php if ($isSignup): ?>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700">Full Name</label>
-                            <input type="text" name="name" required minlength="2" autocomplete="name" class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
-                        </div>
-                    <?php endif; ?>
-
                     <div>
                         <label class="block text-sm font-medium text-slate-700">Email Address</label>
                         <input type="email" name="email" required autocomplete="email" class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
@@ -109,18 +90,8 @@ $switchLabel = $isSignup ? 'Sign in' : 'Sign up';
 
                     <div>
                         <label class="block text-sm font-medium text-slate-700">Password</label>
-                        <input type="password" name="password" required minlength="8" autocomplete="<?= $isSignup ? 'new-password' : 'current-password' ?>" class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
-                        <?php if ($isSignup): ?>
-                            <p class="mt-2 text-xs text-slate-500">Use at least 8 characters.</p>
-                        <?php endif; ?>
+                        <input type="password" name="password" required autocomplete="current-password" class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
                     </div>
-
-                    <?php if ($isSignup): ?>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700">Confirm Password</label>
-                            <input type="password" name="confirm_password" required minlength="8" autocomplete="new-password" class="mt-1 block w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
-                        </div>
-                    <?php endif; ?>
 
                     <button type="submit" class="w-full rounded-xl bg-primary px-4 py-3 font-semibold text-white shadow-lg shadow-primary/20 hover:bg-blue-800 transition-colors">
                         <?= htmlspecialchars($buttonLabel) ?>
@@ -128,10 +99,7 @@ $switchLabel = $isSignup ? 'Sign in' : 'Sign up';
                 </form>
 
                 <div class="mt-6 text-sm text-slate-600 flex flex-col gap-2">
-                    <span class="text-slate-500">This site uses hashed passwords, CSRF protection, and secure session handling.</span>
-                    <a href="<?= htmlspecialchars($switchLink) ?>" class="font-medium text-primary hover:text-blue-800 transition-colors">
-                        <?= htmlspecialchars($switchText . ' ' . $switchLabel) ?>
-                    </a>
+                    <span class="text-slate-500">This login is restricted to site administrators.</span>
                 </div>
             </div>
         </div>
