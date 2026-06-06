@@ -9,11 +9,11 @@
             </svg>
             <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 fade-in">
                 <div class="sm:text-center lg:text-left">
-                    <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl tracking-tight font-extrabold text-white">
                         <span class="block xl:inline">Empowering Youth</span>
                         <span class="block text-secondary">Through Education</span>
                     </h1>
-                    <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-base sm:text-xl$3">
+                    <p class="mt-3 text-base sm:text-lg md:text-xl text-gray-300 sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5">
                         Join DANTWORF INSPIRES NETWORK (DIN) to access life-changing scholarships, internships, fellowships, and leadership opportunities.
                     </p>
                     <div class="mt-5 sm:mt-8 flex justify-center lg:justify-start gap-4">
