@@ -16,14 +16,12 @@
                     <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                         Join DANTWORF INSPIRES NETWORK (DIN) to access life-changing scholarships, internships, fellowships, and leadership opportunities.
                     </p>
-                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                        <div class="rounded-md shadow">
-                            <a href="/join" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-green-600 md:py-4 md:text-lg md:px-10 transition-colors">
+                            <a href="/join" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-secondary hover:bg-green-600 md:py-4 md:text-lg md:px-10 transition-colors">
                                 Join Now
                             </a>
                         </div>
                         <div class="mt-3 sm:mt-0 sm:ml-3">
-                            <a href="/donate" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-colors">
+                            <a href="/donate" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-colors">
                                 Donate
                             </a>
                         </div>
@@ -142,25 +140,35 @@
         <!-- Success Stories Preview -->
         <div>
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Success Stories</h3>
-            <div class="bg-primary text-white rounded-lg p-8 shadow-xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-800 rounded-full opacity-50"></div>
-                <div class="relative z-10">
-                    <svg class="h-8 w-8 text-secondary mb-4" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                    </svg>
-                    <p class="text-lg italic font-medium mb-4">"DIN helped me secure a full scholarship to pursue my master's degree. The mentorship program was truly life-changing and gave me the confidence I needed."</p>
-                    <div class="flex items-center">
-                        <div class="h-10 w-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold overflow-hidden">
-                            <!-- Placeholder avatar -->
-                            IMG
-                        </div>
-                        <div class="ml-3">
-                            <p class="font-bold">Sarah Mensah</p>
-                            <p class="text-blue-200 text-sm">Scholarship Beneficiary</p>
+            <?php if (!empty($successStories)): ?>
+                <?php $featuredStory = $successStories[0]; ?>
+                <div class="bg-primary text-white rounded-xl p-8 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-800 rounded-full opacity-50"></div>
+                    <div class="relative z-10">
+                        <svg class="h-8 w-8 text-secondary mb-4" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                        </svg>
+                        <p class="text-lg italic font-medium mb-4 line-clamp-3">"<?= nl2br(htmlspecialchars($featuredStory['content'])) ?>"</p>
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold overflow-hidden">
+                                <?php if (!empty($featuredStory['image_path'])): ?>
+                                    <img src="<?= htmlspecialchars($featuredStory['image_path']) ?>" alt="Avatar" class="w-full h-full object-cover">
+                                <?php else: ?>
+                                    <?= substr(htmlspecialchars($featuredStory['name']), 0, 1) ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="ml-3">
+                                <p class="font-bold"><?= htmlspecialchars($featuredStory['name']) ?></p>
+                                <p class="text-blue-200 text-sm"><?= htmlspecialchars($featuredStory['headline']) ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php else: ?>
+                <div class="bg-gray-100 rounded-xl p-8 text-center text-gray-500">
+                    No success stories yet. Check back later!
+                </div>
+            <?php endif; ?>
             <a href="/success-stories" class="inline-block mt-4 text-primary font-bold hover:underline">Read more stories &rarr;</a>
         </div>
     </div>
@@ -177,7 +185,7 @@
             Your generous donation allows us to provide more scholarships, run effective mentorship programs, and reach remote communities.
         </p>
         <div class="mt-8">
-            <a href="/donate" class="bg-secondary border border-transparent rounded-md shadow px-8 py-3 inline-flex items-center text-base font-medium text-white hover:bg-green-600 transition-colors">
+            <a href="/donate" class="bg-secondary border border-transparent rounded-full shadow px-8 py-3 inline-flex items-center text-base font-medium text-white hover:bg-green-600 transition-colors">
                 Make a Donation Today
             </a>
         </div>

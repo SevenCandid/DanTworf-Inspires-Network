@@ -27,43 +27,26 @@
 
     <!-- Testimonials / Profiles -->
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Story 1 -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="h-48 bg-gray-200 animate-pulse flex items-center justify-center">
-                <span class="text-gray-400 font-semibold">Image Placeholder</span>
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900">Sarah Mensah</h3>
-                <p class="text-sm font-medium text-secondary mb-4">MSc Computer Science, Oxford University</p>
-                <p class="text-gray-600 italic">"DIN's mentorship program helped me refine my essays and prepare for the rigorous interview process. I am now pursuing my dream degree on a full scholarship."</p>
-            </div>
-        </div>
-
-        <!-- Story 2 -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="h-48 bg-gray-200 animate-pulse flex items-center justify-center">
-                <span class="text-gray-400 font-semibold">Image Placeholder</span>
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900">David Osei</h3>
-                <p class="text-sm font-medium text-secondary mb-4">Software Engineer Intern, Google</p>
-                <p class="text-gray-600 italic">"The career development workshops gave me the technical edge and networking skills I needed to land an internship at one of the top tech companies in the world."</p>
-            </div>
-        </div>
-
-        <!-- Story 3 -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="h-48 bg-gray-200 animate-pulse flex items-center justify-center">
-                <span class="text-gray-400 font-semibold">Image Placeholder</span>
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900">Aisha Bello</h3>
-                <p class="text-sm font-medium text-secondary mb-4">Founder, TechForGirls</p>
-                <p class="text-gray-600 italic">"Through the leadership training I received at DIN, I gained the confidence to start my own NGO focused on teaching young girls how to code in rural communities."</p>
-            </div>
-        </div>
-
+        <?php if (!empty($stories)): ?>
+            <?php foreach ($stories as $story): ?>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <?php if (!empty($story['image_path'])): ?>
+                            <img src="<?= htmlspecialchars($story['image_path']) ?>" alt="<?= htmlspecialchars($story['name']) ?>" class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <span class="text-gray-400 font-semibold">No Image</span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900"><?= htmlspecialchars($story['name']) ?></h3>
+                        <p class="text-sm font-medium text-secondary mb-4"><?= htmlspecialchars($story['headline']) ?></p>
+                        <div class="text-gray-600 italic mb-4 flex-grow line-clamp-4"><?= nl2br(htmlspecialchars($story['content'])) ?></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-span-full text-center text-gray-500 py-12">No success stories available yet.</div>
+        <?php endif; ?>
     </div>
 </div>
 

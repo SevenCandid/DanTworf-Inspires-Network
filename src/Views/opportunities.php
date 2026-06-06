@@ -45,7 +45,7 @@
                                         <?= $opp['deadline'] ? htmlspecialchars(date('M d, Y', strtotime($opp['deadline']))) : 'Ongoing' ?>
                                     </span>
                                 </div>
-                                <a href="<?= htmlspecialchars($opp['link'] ?? '#') ?>" target="_blank" class="w-full block text-center bg-primary hover:bg-blue-800 text-white font-medium py-2 px-4 rounded transition-colors">
+                                <a href="<?= htmlspecialchars($opp['link'] ?? '#') ?>" target="_blank" class="w-full block text-center bg-primary hover:bg-blue-800 text-white font-medium py-2 px-4 rounded-full transition-colors">
                                     Apply Now
                                 </a>
                             </div>

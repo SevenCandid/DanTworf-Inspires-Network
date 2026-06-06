@@ -46,12 +46,13 @@
                     <a href="/programs" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Programs</a>
                     <a href="/opportunities" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Opportunities</a>
                     <a href="/success-stories" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Success Stories</a>
+                    <a href="/blogs" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Blog Articles</a>
                     <a href="/events" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Events & News</a>
                     <a href="/gallery" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Gallery</a>
                     <a href="/resources" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Resources</a>
                     <a href="/join" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Join Us</a>
-                    <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-3 py-1.5 rounded-md text-[13px] font-medium shadow transition-colors">Donate</a>
-                    <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-3 py-1.5 rounded-md text-[13px] font-medium shadow transition-colors">Contact</a>
+                    <a href="/donate" class="bg-secondary text-white hover:bg-green-600 px-4 py-1.5 rounded-full text-[13px] font-medium shadow transition-colors">Donate</a>
+                    <a href="/contact" class="bg-primary text-white hover:bg-blue-800 px-4 py-1.5 rounded-full text-[13px] font-medium shadow transition-colors">Contact</a>
                     <?php if ($isAuthenticated): ?>
                         <?php if ($isAdmin): ?>
                             <a href="/admin" class="text-gray-500 hover:text-primary px-2 py-1.5 rounded-md text-[13px] font-medium transition-colors">Dashboard</a>
@@ -83,6 +84,7 @@
                 <a href="/programs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Programs</a>
                 <a href="/opportunities" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Opportunities</a>
                 <a href="/success-stories" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Success Stories</a>
+                <a href="/blogs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Blog Articles</a>
                 <a href="/events" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Events & News</a>
                 <a href="/gallery" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Gallery</a>
                 <a href="/resources" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-sm font-medium">Resources</a>
@@ -159,8 +161,8 @@
                 <h4 class="text-base font-bold mb-4">Newsletter</h4>
                 <p class="text-gray-400 text-sm mb-4">Subscribe to our newsletter for the latest updates on scholarships and opportunities.</p>
                 <form action="/newsletter" method="POST" class="flex flex-col space-y-2">
-                    <input type="email" name="email" placeholder="Your email address" required class="px-4 py-2 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
-                    <button type="submit" class="bg-secondary hover:bg-green-600 px-4 py-2 rounded text-white font-medium transition-colors">Subscribe</button>
+                    <input type="email" name="email" placeholder="Your email address" required class="px-4 py-2 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button type="submit" class="bg-secondary hover:bg-green-600 px-4 py-2 rounded-full text-white font-medium transition-colors">Subscribe</button>
                 </form>
             </div>
         </div>

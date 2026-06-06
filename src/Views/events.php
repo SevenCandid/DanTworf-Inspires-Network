@@ -58,7 +58,7 @@
         <div class="mt-12 bg-blue-50 rounded-2xl p-6 sm:p-8 text-center border border-blue-100">
             <h3 class="text-xl font-bold text-gray-900 mb-2">Want to host an event with us?</h3>
             <p class="text-sm sm:text-base text-gray-600 mb-4 max-w-2xl mx-auto">Partner with DIN to reach ambitious young people through workshops, talks, and community programs.</p>
-            <a href="/contact" class="inline-flex items-center justify-center bg-primary text-white px-5 py-3 rounded-lg text-sm font-bold hover:bg-blue-800 transition-colors">Partner With Us</a>
+            <a href="/contact" class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-blue-800 transition-colors">Partner With Us</a>
         </div>
     </div>
 </div>

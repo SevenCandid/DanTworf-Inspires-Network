@@ -11,11 +11,16 @@ use App\Models\Member;
 use App\Models\Volunteer;
 use App\Models\Donation;
 use App\Models\Newsletter;
+use App\Models\SuccessStory;
+use App\Models\Gallery;
+use App\Models\Resource;
+use App\Models\Blog;
 
 class HomeController {
     public function index() {
         $opportunities = Opportunity::getLatest(3);
         $events = Event::getUpcoming(3);
+        $successStories = SuccessStory::getAll();
         require_once __DIR__ . '/../Views/home.php';
     }
 
@@ -33,6 +38,7 @@ class HomeController {
     }
 
     public function successStories() {
+        $stories = SuccessStory::getAll();
         require_once __DIR__ . '/../Views/success_stories.php';
     }
 
@@ -42,11 +48,18 @@ class HomeController {
     }
 
     public function gallery() {
+        $galleryItems = Gallery::getAll();
         require_once __DIR__ . '/../Views/gallery.php';
     }
 
     public function resources() {
+        $resources = Resource::getAll();
         require_once __DIR__ . '/../Views/resources.php';
+    }
+
+    public function blogs() {
+        $blogs = Blog::getPublished();
+        require_once __DIR__ . '/../Views/blogs.php';
     }
 
     public function join() {
