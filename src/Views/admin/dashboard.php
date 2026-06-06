@@ -56,34 +56,34 @@
 </div>
 
 <!-- Secondary Stats -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+<div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8">
     <!-- Messages with unread badge -->
-    <a href="/admin/messages" class="bg-white rounded-xl shadow-sm p-5 border border-gray-100 flex items-center space-x-4 hover:shadow-md transition-shadow cursor-pointer">
-        <div class="h-10 w-10 bg-red-100 text-red-500 rounded-lg flex items-center justify-center flex-shrink-0 relative">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <span id="unread-badge" class="absolute -top-1 -right-1 <?= ($stats['messages'] > 0 ? '' : 'hidden') ?> bg-red-500 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center" data-stat="unread"><?= $stats['unread'] ?? 0 ?></span>
+    <a href="/admin/messages" class="bg-white rounded-xl shadow-sm p-3 sm:p-5 border border-gray-100 flex flex-col sm:flex-row items-center sm:space-x-4 hover:shadow-md transition-shadow cursor-pointer text-center sm:text-left overflow-hidden">
+        <div class="h-8 w-8 sm:h-10 sm:w-10 mb-1 sm:mb-0 bg-red-100 text-red-500 rounded-lg flex items-center justify-center flex-shrink-0 relative">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span id="unread-badge" class="absolute -top-1 -right-1 <?= ($stats['messages'] > 0 ? '' : 'hidden') ?> bg-red-500 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center scale-75 sm:scale-100 origin-center" data-stat="unread"><?= $stats['unread'] ?? 0 ?></span>
         </div>
-        <div>
-            <p class="text-2xl font-bold text-gray-900" data-stat="messages"><?= $stats['messages'] ?></p>
-            <p class="text-xs text-gray-500 font-medium">Messages</p>
+        <div class="w-full">
+            <p class="text-base sm:text-2xl font-bold text-gray-900" data-stat="messages"><?= $stats['messages'] ?></p>
+            <p class="text-[9px] sm:text-xs text-gray-500 font-medium truncate">Messages</p>
         </div>
     </a>
-    <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100 flex items-center space-x-4">
-        <div class="h-10 w-10 bg-indigo-100 text-indigo-500 rounded-lg flex items-center justify-center">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857"/></svg>
+    <div class="bg-white rounded-xl shadow-sm p-3 sm:p-5 border border-gray-100 flex flex-col sm:flex-row items-center sm:space-x-4 text-center sm:text-left overflow-hidden">
+        <div class="h-8 w-8 sm:h-10 sm:w-10 mb-1 sm:mb-0 bg-indigo-100 text-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857"/></svg>
         </div>
-        <div>
-            <p class="text-2xl font-bold text-gray-900" data-stat="volunteers"><?= $stats['volunteers'] ?></p>
-            <p class="text-xs text-gray-500 font-medium">Volunteers</p>
+        <div class="w-full">
+            <p class="text-base sm:text-2xl font-bold text-gray-900" data-stat="volunteers"><?= $stats['volunteers'] ?></p>
+            <p class="text-[9px] sm:text-xs text-gray-500 font-medium truncate">Volunteers</p>
         </div>
     </div>
-    <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100 flex items-center space-x-4">
-        <div class="h-10 w-10 bg-teal-100 text-teal-500 rounded-lg flex items-center justify-center">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2"/></svg>
+    <div class="bg-white rounded-xl shadow-sm p-3 sm:p-5 border border-gray-100 flex flex-col sm:flex-row items-center sm:space-x-4 text-center sm:text-left overflow-hidden">
+        <div class="h-8 w-8 sm:h-10 sm:w-10 mb-1 sm:mb-0 bg-teal-100 text-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2"/></svg>
         </div>
-        <div>
-            <p class="text-2xl font-bold text-gray-900" data-stat="blogs"><?= $stats['blogs'] ?></p>
-            <p class="text-xs text-gray-500 font-medium">Blog Articles</p>
+        <div class="w-full">
+            <p class="text-base sm:text-2xl font-bold text-gray-900" data-stat="blogs"><?= $stats['blogs'] ?></p>
+            <p class="text-[9px] sm:text-xs text-gray-500 font-medium truncate">Blog Articles</p>
         </div>
     </div>
 </div>
