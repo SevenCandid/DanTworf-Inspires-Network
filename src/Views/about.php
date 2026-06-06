@@ -3,8 +3,8 @@
 <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
-            <h1 class="text-4xl font-extrabold text-gray-900 mb-4">About DANTWORF INSPIRES NETWORK</h1>
-            <p class="text-xl text-gray-500">Bridging the gap between talent and opportunity.</p>
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 px-2 leading-tight">About DANTWORF INSPIRES NETWORK</h1>
+            <p class="text-lg md:text-xl text-gray-500 mt-3">Bridging the gap between talent and opportunity.</p>
         </div>
 
         <!-- History -->
