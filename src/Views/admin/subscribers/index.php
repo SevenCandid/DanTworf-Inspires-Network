@@ -14,21 +14,21 @@ $thisMonthCount = count(array_filter($subscribers, fn($s) => date('Y-m', strtoti
 </div>
 
 <!-- Summary Cards -->
-<div class="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Subscribers</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-primary mt-1"><?= count($subscribers) ?></p>
-        <p class="text-xs text-gray-400 mt-1">All time</p>
+<div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Subscribers">Total Subs</p>
+        <p class="text-base sm:text-3xl font-extrabold text-primary mt-1 truncate"><?= count($subscribers) ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">All time</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">This Month</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-secondary mt-1"><?= $thisMonthCount ?></p>
-        <p class="text-xs text-gray-400 mt-1"><?= date('F Y') ?></p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="This Month">This Month</p>
+        <p class="text-base sm:text-3xl font-extrabold text-secondary mt-1 truncate"><?= $thisMonthCount ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate"><?= date('F Y') ?></p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Latest Subscriber</p>
-        <p class="text-xs sm:text-base font-bold text-gray-900 mt-1 truncate"><?= $latestSubscriber ? htmlspecialchars($latestSubscriber['email']) : 'None yet' ?></p>
-        <p class="text-xs text-gray-400 mt-1"><?= $latestSubscriber ? date('M d, Y', strtotime($latestSubscriber['created_at'])) : '—' ?></p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Latest Subscriber">Latest</p>
+        <p class="text-[10px] sm:text-base font-bold text-gray-900 mt-1 truncate"><?= $latestSubscriber ? htmlspecialchars($latestSubscriber['email']) : 'None' ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate"><?= $latestSubscriber ? date('M d, Y', strtotime($latestSubscriber['created_at'])) : '—' ?></p>
     </div>
 </div>
 

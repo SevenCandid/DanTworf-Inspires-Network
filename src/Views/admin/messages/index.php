@@ -14,21 +14,21 @@ $unreadCount = count(array_filter($messages, fn($m) => ($m['status'] ?? '') === 
 </div>
 
 <!-- Summary Cards -->
-<div class="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Messages</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-primary mt-1"><?= count($messages) ?></p>
-        <p class="text-xs text-gray-400 mt-1">All time</p>
+<div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Messages">Total Messages</p>
+        <p class="text-base sm:text-3xl font-extrabold text-primary mt-1 truncate"><?= count($messages) ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">All time</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-red-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Unread</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-red-500 mt-1"><?= $unreadCount ?></p>
-        <p class="text-xs text-gray-400 mt-1">Need attention</p>
+    <div class="bg-white rounded-xl shadow-sm border border-red-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Unread">Unread</p>
+        <p class="text-base sm:text-3xl font-extrabold text-red-500 mt-1 truncate"><?= $unreadCount ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">Need attention</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Read</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1"><?= count($messages) - $unreadCount ?></p>
-        <p class="text-xs text-gray-400 mt-1">Already reviewed</p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Read">Read</p>
+        <p class="text-base sm:text-3xl font-extrabold text-gray-900 mt-1 truncate"><?= count($messages) - $unreadCount ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">Already reviewed</p>
     </div>
 </div>
 

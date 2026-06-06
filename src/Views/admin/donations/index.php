@@ -14,21 +14,21 @@ $completedCount = count(array_filter($donations, fn($d) => ($d['status'] ?? '') 
 </div>
 
 <!-- Summary Cards -->
-<div class="grid grid-cols-3 gap-3 sm:gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Received</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-secondary mt-1">₵<?= number_format($totalAmount, 2) ?></p>
-        <p class="text-xs text-gray-400 mt-1">Across all donations</p>
+<div class="grid grid-cols-3 gap-2 sm:gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Received">Total Received</p>
+        <p class="text-base sm:text-3xl font-extrabold text-secondary mt-1 truncate">₵<?= number_format($totalAmount, 2) ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">Across all donations</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Total Donors</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-primary mt-1"><?= count($donations) ?></p>
-        <p class="text-xs text-gray-400 mt-1">All-time entries</p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Total Donors">Total Donors</p>
+        <p class="text-base sm:text-3xl font-extrabold text-primary mt-1 truncate"><?= count($donations) ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">All-time entries</p>
     </div>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 sm:p-6">
-        <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wide">Completed</p>
-        <p class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1"><?= $completedCount ?></p>
-        <p class="text-xs text-gray-400 mt-1">Verified transactions</p>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-2 sm:p-6">
+        <p class="text-[9px] sm:text-sm font-semibold text-gray-500 uppercase tracking-wider truncate" title="Completed">Completed</p>
+        <p class="text-base sm:text-3xl font-extrabold text-gray-900 mt-1 truncate"><?= $completedCount ?></p>
+        <p class="text-[8px] sm:text-xs text-gray-400 mt-0.5 sm:mt-1 truncate">Verified transactions</p>
     </div>
 </div>
 
