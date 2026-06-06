@@ -2,8 +2,8 @@
 
 <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-7xl mx-auto text-center mb-16">
-        <h1 class="text-3xl sm:text-3xl sm:text-4xl$3">Blog Articles</h1>
-        <p class="text-lg sm:text-lg sm:text-xl$3">Read the latest news, stories, and updates from DIN.</p>
+        <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">Blog Articles</h1>
+        <p class="text-lg sm:text-base sm:text-xl$3">Read the latest news, stories, and updates from DIN.</p>
     </div>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
@@ -73,7 +73,7 @@
         <?php else: ?>
             <div class="col-span-full text-center text-gray-500 py-16 bg-white rounded-2xl border border-gray-100">
                 <svg class="mx-auto h-12 w-12 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v10a2 2 0 01-2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2v4h4M8 10h8M8 14h8"></path></svg>
-                <p class="text-base sm:text-base sm:text-lg$3">No blog articles published yet.</p>
+                <p class="text-base sm:text-sm sm:text-lg$3">No blog articles published yet.</p>
             </div>
         <?php endif; ?>
     </div>
@@ -121,4 +121,5 @@ function closeBlogModal(id) {
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
 

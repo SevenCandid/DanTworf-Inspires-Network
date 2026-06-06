@@ -9,11 +9,11 @@
             </svg>
             <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 fade-in">
                 <div class="sm:text-center lg:text-left">
-                    <h1 class="text-3xl sm:text-3xl sm:text-4xl$3">
+                    <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">
                         <span class="block xl:inline">Empowering Youth</span>
                         <span class="block text-secondary">Through Education</span>
                     </h1>
-                    <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-lg sm:text-xl$3">
+                    <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-base sm:text-xl$3">
                         Join DANTWORF INSPIRES NETWORK (DIN) to access life-changing scholarships, internships, fellowships, and leadership opportunities.
                     </p>
                     <div class="mt-5 sm:mt-8 flex justify-center lg:justify-start gap-4">
@@ -52,8 +52,8 @@
 <div class="bg-white pt-12 sm:pt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-3xl sm:text-4xl$3">Our Impact in Numbers</h2>
-            <p class="mt-3 text-lg sm:text-xl$3">
+            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-2xl sm:text-4xl$3">Our Impact in Numbers</h2>
+            <p class="mt-3 text-base sm:text-xl$3">
                 We are proud of the difference we've made so far.
             </p>
         </div>
@@ -65,15 +65,15 @@
                 <div class="max-w-4xl mx-auto">
                     <dl class="rounded-xl bg-white shadow-lg grid grid-cols-3 divide-x divide-gray-100 overflow-hidden">
                         <div class="flex flex-col p-3 sm:p-6 text-center">
-                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-base sm:text-lg$3">Students</dt>
+                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-sm sm:text-lg$3">Students</dt>
                             <dd class="order-1 text-xl sm:text-5xl font-extrabold text-primary">5,000+</dd>
                         </div>
                         <div class="flex flex-col p-3 sm:p-6 text-center">
-                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-base sm:text-lg$3">Scholarships</dt>
+                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-sm sm:text-lg$3">Scholarships</dt>
                             <dd class="order-1 text-xl sm:text-5xl font-extrabold text-secondary">200+</dd>
                         </div>
                         <div class="flex flex-col p-3 sm:p-6 text-center">
-                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-base sm:text-lg$3">Mentors</dt>
+                            <dt class="order-2 mt-1 sm:mt-2 text-[10px] sm:text-sm sm:text-lg$3">Mentors</dt>
                             <dd class="order-1 text-xl sm:text-5xl font-extrabold text-primary">150+</dd>
                         </div>
                     </dl>
@@ -87,7 +87,7 @@
 <div class="bg-gray-50 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-3xl sm:text-4xl$3">Featured Opportunities</h2>
+            <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-2xl sm:text-4xl$3">Featured Opportunities</h2>
         </div>
         <div class="mt-12 grid gap-8 lg:grid-cols-3">
             <?php if (!empty($opportunities)): ?>
@@ -99,7 +99,7 @@
                                     <?= htmlspecialchars($opp['category']) ?>
                                 </p>
                                 <a href="<?= htmlspecialchars($opp['link'] ?? '#') ?>" class="block mt-2" target="_blank">
-                                    <p class="text-lg sm:text-lg sm:text-xl$3"><?= htmlspecialchars($opp['title']) ?></p>
+                                    <p class="text-lg sm:text-base sm:text-xl$3"><?= htmlspecialchars($opp['title']) ?></p>
                                     <p class="mt-3 text-base text-gray-500 line-clamp-3"><?= htmlspecialchars($opp['description']) ?></p>
                                 </a>
                             </div>
@@ -135,7 +135,7 @@
                         <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-100">
                             <div class="bg-primary text-white p-3 rounded text-center w-16 flex-shrink-0">
                                 <span class="block text-sm font-bold"><?= strtoupper(date('M', $eventDate)) ?></span>
-                                <span class="block text-lg sm:text-xl$3"><?= date('d', $eventDate) ?></span>
+                                <span class="block text-base sm:text-xl$3"><?= date('d', $eventDate) ?></span>
                             </div>
                             <div class="ml-4">
                                 <h4 class="font-bold text-gray-900"><?= htmlspecialchars($event['title']) ?></h4>
@@ -161,7 +161,7 @@
                         <svg class="h-8 w-8 text-secondary mb-4" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
                             <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                         </svg>
-                        <p class="text-base sm:text-base sm:text-lg$3">"<?= nl2br(htmlspecialchars($featuredStory['content'])) ?>"</p>
+                        <p class="text-base sm:text-sm sm:text-lg$3">"<?= nl2br(htmlspecialchars($featuredStory['content'])) ?>"</p>
                         <div class="flex items-center">
                             <div class="h-10 w-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold overflow-hidden">
                                 <?php if (!empty($featuredStory['image_path'])): ?>
@@ -191,10 +191,10 @@
 <div class="bg-gray-900 relative overflow-hidden">
     <div class="absolute inset-0 bg-primary opacity-20"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 relative z-10 text-center">
-        <h2 class="text-3xl font-extrabold text-white sm:text-3xl sm:text-4xl$3">
+        <h2 class="text-3xl font-extrabold text-white sm:text-2xl sm:text-4xl$3">
             <span class="block">Help Us Empower More Youth</span>
         </h2>
-        <p class="mt-4 text-base sm:text-lg$3">
+        <p class="mt-4 text-sm sm:text-lg$3">
             Your generous donation allows us to provide more scholarships, run effective mentorship programs, and reach remote communities.
         </p>
         <div class="mt-8">
@@ -209,5 +209,6 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
 
 

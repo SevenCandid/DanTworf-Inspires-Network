@@ -2,8 +2,8 @@
 
 <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-7xl mx-auto text-center mb-12">
-        <h1 class="text-3xl sm:text-3xl sm:text-4xl$3">Make a Donation</h1>
-        <p class="text-lg sm:text-lg sm:text-xl$3">Your financial support directly funds scholarships, mentorship programs, and outreach activities. Thank you for investing in the future.</p>
+        <h1 class="text-3xl sm:text-2xl sm:text-4xl$3">Make a Donation</h1>
+        <p class="text-lg sm:text-base sm:text-xl$3">Your financial support directly funds scholarships, mentorship programs, and outreach activities. Thank you for investing in the future.</p>
     </div>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -15,20 +15,20 @@
             <div class="space-y-8">
                 <!-- Mobile Money -->
                 <div>
-                    <h3 class="text-base sm:text-base sm:text-lg$3">
+                    <h3 class="text-base sm:text-sm sm:text-lg$3">
                         <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                         Mobile Money
                     </h3>
                     <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
                         <p class="text-gray-700"><strong>Network:</strong> MTN Mobile Money</p>
                         <p class="text-gray-700"><strong>Name:</strong> Dantworf Inspires Network</p>
-                        <p class="text-gray-700 text-lg sm:text-xl$3">055 123 4567</p>
+                        <p class="text-gray-700 text-base sm:text-xl$3">055 123 4567</p>
                     </div>
                 </div>
 
                 <!-- Bank Transfer -->
                 <div>
-                    <h3 class="text-base sm:text-base sm:text-lg$3">
+                    <h3 class="text-base sm:text-sm sm:text-lg$3">
                         <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
                         Bank Transfer
                     </h3>
@@ -96,5 +96,6 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
 
 
