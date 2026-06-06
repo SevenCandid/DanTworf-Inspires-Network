@@ -35,6 +35,20 @@ class AdminDataController extends AdminBaseController {
         require_once __DIR__ . '/../Views/admin/donations/index.php';
     }
 
+    public function markDonationCompleted() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!Security::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
+                die("Invalid CSRF token.");
+            }
+            $id = (int)($_POST['id'] ?? 0);
+            if ($id) {
+                Donation::markAsCompleted($id);
+            }
+            header("Location: /admin/donations");
+            exit;
+        }
+    }
+
     // Subscribers
     public function subscribers() {
         $subscribers = Newsletter::getAll();

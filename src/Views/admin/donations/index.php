@@ -70,6 +70,7 @@ $completedCount = count(array_filter($donations, fn($d) => ($d['status'] ?? '') 
                             <div><p class='text-xs font-semibold text-gray-500 mb-1'>Payment Method</p><p><?= htmlspecialchars(addslashes($donation['payment_method'] ?? 'N/A')) ?></p></div>
                             <div><p class='text-xs font-semibold text-gray-500 mb-1'>Transaction Reference</p><p class='font-mono text-sm bg-gray-50 px-3 py-2 rounded'><?= htmlspecialchars(addslashes($donation['transaction_reference'] ?? 'N/A')) ?></p></div>
                             <div><p class='text-xs font-semibold text-gray-500 mb-1'>Date</p><p><?= date('F j, Y \a\t h:i A', strtotime($donation['created_at'])) ?></p></div>
+                            <?= ($donation['status'] ?? 'pending') !== 'completed' ? "<div class='pt-4 border-t border-gray-100'><form action='/admin/donations/mark-completed' method='POST'><input type='hidden' name='csrf_token' value='" . \App\Core\Security::generateCsrfToken() . "'><input type='hidden' name='id' value='" . $donation['id'] . "'><button type='submit' class='w-full bg-secondary hover:bg-green-700 text-white font-bold py-3 px-4 rounded-full transition-colors'>Verify Transaction</button></form></div>" : "" ?>
                         </div>
                     `)">
                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap"><?= date('M d, Y', strtotime($donation['created_at'])) ?></td>

@@ -172,6 +172,7 @@ $router->get('/admin/messages', 'AdminDataController@messages');
 $router->post('/admin/messages/mark-read', 'AdminDataController@markMessageRead');
 $router->get('/admin/donations', 'AdminDataController@donations');
 $router->get('/admin/donations/export', 'AdminDataController@exportDonations');
+$router->post('/admin/donations/mark-completed', 'AdminDataController@markDonationCompleted');
 $router->get('/admin/subscribers', 'AdminDataController@subscribers');
 $router->get('/admin/subscribers/export', 'AdminDataController@exportSubscribers');
 

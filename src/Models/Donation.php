@@ -25,4 +25,10 @@ class Donation {
         $db = Database::getConnection();
         return $db->query("SELECT COUNT(*) FROM donations")->fetchColumn();
     }
+
+    public static function markAsCompleted($id) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("UPDATE donations SET status = 'completed' WHERE id = :id");
+        return $stmt->execute(['id' => $id]);
+    }
 }
