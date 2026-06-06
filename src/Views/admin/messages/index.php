@@ -4,8 +4,9 @@
     <h2 class="text-2xl font-bold text-gray-800">Contact Messages</h2>
 </div>
 
-<div class="bg-white shadow-sm rounded-xl overflow-hidden border border-gray-100">
-    <table class="min-w-full divide-y divide-gray-200">
+<div class="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
                 <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Date</th>
@@ -28,7 +29,8 @@
                         <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate" title="<?= htmlspecialchars($msg['message']) ?>">
                             <?= htmlspecialchars(substr($msg['message'], 0, 50)) . (strlen($msg['message']) > 50 ? '...' : '') ?>
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-4 text-right space-x-2">
+                            <button onclick='openDrawer("Message from <?= htmlspecialchars(addslashes($msg['name'])) ?>", `<div class="space-y-4"><div><p class="text-sm font-semibold text-gray-500">Email:</p><p><?= htmlspecialchars(addslashes($msg['email'])) ?></p></div><div><p class="text-sm font-semibold text-gray-500">Subject:</p><p><?= htmlspecialchars(addslashes($msg['subject'] ?? 'No Subject')) ?></p></div><div class="bg-gray-50 p-4 rounded-lg"><p class="text-sm font-semibold text-gray-500 mb-2">Message:</p><p class="whitespace-pre-wrap"><?= htmlspecialchars(addslashes($msg['message'])) ?></p></div><p class="text-xs text-gray-400">Sent: <?= date('M d, Y h:i A', strtotime($msg['created_at'])) ?></p></div>`)' class="text-gray-500 hover:text-gray-700 text-sm font-medium border border-gray-200 px-2 py-1 rounded-full">View</button>
                             <?php if ($msg['status'] === 'unread'): ?>
                                 <form action="/admin/messages/mark-read" method="POST" class="inline">
                                     <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
@@ -48,6 +50,7 @@
             <?php endif; ?>
         </tbody>
     </table>
+    </div>
 </div>
 
 <?php 

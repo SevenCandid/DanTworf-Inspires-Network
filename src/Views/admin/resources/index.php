@@ -32,8 +32,9 @@
 </div>
 
 <!-- Resources Table -->
-<div class="bg-white shadow-sm rounded-xl overflow-hidden border border-gray-100">
-    <table class="min-w-full divide-y divide-gray-200">
+<div class="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
                 <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Title</th>
@@ -69,6 +70,7 @@
             <?php endif; ?>
         </tbody>
     </table>
+    </div>
 </div>
 
 <?php 

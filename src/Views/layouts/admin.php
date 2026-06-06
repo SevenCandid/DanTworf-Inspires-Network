@@ -143,9 +143,9 @@
     <main class="md:ml-64 pt-14 md:pt-0 min-h-screen">
         <!-- Top Bar -->
         <div class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-            <h1 class="text-xl font-semibold text-gray-800">Admin Dashboard</h1>
-            <div class="flex items-center space-x-3">
-                <span class="text-sm text-gray-500">Welcome, <?= htmlspecialchars(\App\Core\Session::get('user_name') ?? 'Admin') ?></span>
+            <h1 class="text-xl font-semibold text-gray-800 hidden sm:block">Admin Dashboard</h1>
+            <div class="flex items-center space-x-3 ml-auto">
+                <span class="text-sm text-gray-500 hidden sm:inline-block">Welcome, <?= htmlspecialchars(\App\Core\Session::get('user_name') ?? 'Admin') ?></span>
                 <div class="h-8 w-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">
                     <?= strtoupper(substr(\App\Core\Session::get('user_name') ?? 'A', 0, 1)) ?>
                 </div>
@@ -186,7 +186,58 @@
                 setTimeout(() => el.remove(), 500);
             });
         }, 5000);
+
+        // Global Drawer Functions
+        function openDrawer(title, contentHtml) {
+            document.getElementById('drawerTitle').innerText = title;
+            document.getElementById('drawerContent').innerHTML = contentHtml;
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerPanel = document.getElementById('drawerPanel');
+            
+            drawerOverlay.classList.remove('hidden');
+            // Small delay to allow display block to apply before transition
+            setTimeout(() => {
+                drawerOverlay.classList.remove('opacity-0');
+                drawerPanel.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeDrawer() {
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerPanel = document.getElementById('drawerPanel');
+            
+            drawerOverlay.classList.add('opacity-0');
+            drawerPanel.classList.add('translate-x-full');
+            
+            // Wait for transition to finish before hiding completely
+            setTimeout(() => {
+                drawerOverlay.classList.add('hidden');
+                document.getElementById('drawerContent').innerHTML = '';
+            }, 300);
+        }
     </script>
+
+    <!-- Detail Drawer Component -->
+    <div id="drawerOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0" onclick="closeDrawer()"></div>
+        <div id="drawerPanel" class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+            <!-- Drawer Header -->
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+                <h2 id="drawerTitle" class="text-lg font-bold text-gray-900">Details</h2>
+                <button onclick="closeDrawer()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <!-- Drawer Content -->
+            <div id="drawerContent" class="flex-1 overflow-y-auto p-6 text-sm text-gray-700 space-y-4">
+                <!-- Content injected via JS -->
+            </div>
+            <!-- Drawer Footer -->
+            <div class="px-6 py-4 border-t border-gray-200 bg-gray-50 text-right">
+                <button onclick="closeDrawer()" class="px-4 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">Close</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

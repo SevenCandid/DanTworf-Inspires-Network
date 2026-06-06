@@ -16,15 +16,13 @@
                     <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                         Join DANTWORF INSPIRES NETWORK (DIN) to access life-changing scholarships, internships, fellowships, and leadership opportunities.
                     </p>
-                            <a href="/join" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-secondary hover:bg-green-600 md:py-4 md:text-lg md:px-10 transition-colors">
-                                Join Now
-                            </a>
-                        </div>
-                        <div class="mt-3 sm:mt-0 sm:ml-3">
-                            <a href="/donate" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-colors">
-                                Donate
-                            </a>
-                        </div>
+                    <div class="mt-5 sm:mt-8 flex justify-center lg:justify-start gap-4">
+                        <a href="/join" class="flex-1 max-w-[160px] flex items-center justify-center px-6 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-secondary hover:bg-green-600 transition-colors">
+                            Join Now
+                        </a>
+                        <a href="/donate" class="flex-1 max-w-[160px] flex items-center justify-center px-6 py-3 border border-transparent text-sm font-medium rounded-full text-primary bg-white hover:bg-gray-50 transition-colors">
+                            Donate
+                        </a>
                     </div>
                 </div>
             </main>
