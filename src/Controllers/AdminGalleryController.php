@@ -28,10 +28,12 @@ class AdminGalleryController extends AdminBaseController {
                 // Note: The Upload helper currently validates images tightly. We can skip tight video validation for now or let the helper handle it.
                 // Let's assume for this scope we mainly validate images. We'll pass 'image' to enforce the 20MB limit and extensions.
                 
-                $path = Upload::process($_FILES['file'], 'image'); // Enforce image validation
+                $path = Upload::process($_FILES['file'], 'media'); // Allow images and videos (max 50MB)
                 if ($path) {
-                    Gallery::create($album, $path, 'image');
-                    Session::set('flash_success', 'Photo uploaded to gallery.');
+                    $ext = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
+                    $mediaType = in_array($ext, ['mp4', 'webm', 'ogg', 'mov']) ? 'video' : 'image';
+                    Gallery::create($album, $path, $mediaType);
+                    Session::set('flash_success', ucfirst($mediaType) . ' uploaded to gallery.');
                 }
             } else {
                 Session::set('flash_error', 'Please select a valid file.');

@@ -4,8 +4,8 @@ namespace App\Core;
 
 class Upload {
     
-    // 20MB in bytes
-    const MAX_FILE_SIZE = 20 * 1024 * 1024; 
+    // 50MB in bytes
+    const MAX_FILE_SIZE = 50 * 1024 * 1024; 
     
     public static function process(array $fileArray, string $type = 'image'): ?string {
         if (!isset($fileArray['error']) || $fileArray['error'] !== UPLOAD_ERR_OK) {
@@ -34,6 +34,21 @@ class Upload {
             if (!str_starts_with($mime, 'image/')) {
                  Session::start();
                  Session::set('flash_error', 'Invalid image MIME type.');
+                 return null;
+            }
+        } elseif ($type === 'media') {
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'mp4', 'webm', 'ogg', 'mov'];
+            if (!in_array($extension, $allowedExtensions)) {
+                Session::start();
+                Session::set('flash_error', 'Invalid media format. Allowed: Images or Videos (MP4, WEBM, OGG, MOV).');
+                return null;
+            }
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($finfo, $fileArray['tmp_name']);
+            finfo_close($finfo);
+            if (!str_starts_with($mime, 'image/') && !str_starts_with($mime, 'video/')) {
+                 Session::start();
+                 Session::set('flash_error', 'Invalid media MIME type. Must be an image or video.');
                  return null;
             }
         } elseif ($type === 'pdf') {

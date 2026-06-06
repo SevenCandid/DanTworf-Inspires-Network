@@ -14,11 +14,11 @@
             <input type="text" name="album" value="General" class="mt-1 p-3 block w-full border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
         </div>
         <div class="flex-1 w-full">
-            <label class="block text-sm font-medium text-gray-700">Image File (Max 20MB)</label>
-            <input type="file" name="file" accept="image/*" required class="mt-1 p-2.5 block w-full border border-gray-300 rounded-lg text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-blue-800">
+            <label class="block text-sm font-medium text-gray-700">Image or Video File (Max 50MB)</label>
+            <input type="file" name="file" accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime" required class="mt-1 p-2.5 block w-full border border-gray-300 rounded-lg text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-blue-800">
         </div>
         <button type="submit" class="bg-secondary hover:bg-green-600 text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap">
-            Upload Photo
+            Upload Media
         </button>
     </form>
 </div>
@@ -28,7 +28,11 @@
     <?php if (!empty($galleryItems)): ?>
         <?php foreach ($galleryItems as $item): ?>
             <div class="relative group bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                <img src="/<?= htmlspecialchars($item['file_path']) ?>" alt="Gallery" class="w-full h-40 object-cover">
+                <?php if (($item['type'] ?? 'image') === 'video'): ?>
+                    <video src="/<?= htmlspecialchars($item['file_path']) ?>" class="w-full h-40 object-cover bg-black" controls></video>
+                <?php else: ?>
+                    <img src="/<?= htmlspecialchars($item['file_path']) ?>" alt="Gallery" class="w-full h-40 object-cover">
+                <?php endif; ?>
                 <div class="p-3">
                     <p class="text-xs text-gray-500 font-medium"><?= htmlspecialchars($item['album']) ?></p>
                     <p class="text-xs text-gray-400"><?= date('M d, Y', strtotime($item['created_at'])) ?></p>
