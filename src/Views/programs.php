@@ -2,8 +2,8 @@
 
 <div class="bg-white py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-7xl mx-auto text-center mb-16">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Our Programs</h1>
-        <p class="text-xl text-gray-500 max-w-3xl mx-auto">We offer a variety of structured programs designed to equip youth with the tools they need to succeed academically and professionally.</p>
+        <h1 class="text-3xl sm:text-3xl sm:text-4xl$3">Our Programs</h1>
+        <p class="text-lg sm:text-lg sm:text-xl$3">We offer a variety of structured programs designed to equip youth with the tools they need to succeed academically and professionally.</p>
     </div>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -69,3 +69,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

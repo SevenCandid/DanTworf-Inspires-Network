@@ -3,8 +3,8 @@
 <div class="bg-gray-50 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-extrabold text-gray-900">Explore Opportunities</h1>
-            <p class="mt-4 text-xl text-gray-500">Find the perfect scholarship, internship, or fellowship to advance your journey.</p>
+            <h1 class="text-3xl sm:text-3xl sm:text-4xl$3">Explore Opportunities</h1>
+            <p class="mt-4 text-lg sm:text-xl$3">Find the perfect scholarship, internship, or fellowship to advance your journey.</p>
         </div>
 
         <!-- Filter and Search -->
@@ -34,7 +34,7 @@
                                 <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold uppercase tracking-wide mb-3">
                                     <?= htmlspecialchars($opp['category']) ?>
                                 </span>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2 opp-title"><?= htmlspecialchars($opp['title']) ?></h3>
+                                <h3 class="text-lg sm:text-lg sm:text-xl$3"><?= htmlspecialchars($opp['title']) ?></h3>
                                 <p class="text-gray-600 mb-4 line-clamp-4"><?= nl2br(htmlspecialchars($opp['description'])) ?></p>
                             </div>
                             
@@ -98,3 +98,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+

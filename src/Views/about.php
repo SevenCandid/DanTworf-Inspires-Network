@@ -3,8 +3,8 @@
 <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 fade-in">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
-            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 px-2 leading-tight">About DANTWORF INSPIRES NETWORK</h1>
-            <p class="text-lg md:text-xl text-gray-500 mt-3">Bridging the gap between talent and opportunity.</p>
+            <h1 class="text-2xl md:text-3xl lg:text-3xl sm:text-4xl$3">About DANTWORF INSPIRES NETWORK</h1>
+            <p class="text-lg md:text-lg sm:text-xl$3">Bridging the gap between talent and opportunity.</p>
         </div>
 
         <!-- History -->
@@ -34,19 +34,19 @@
             <h2 class="text-2xl font-bold text-primary mb-6">Our Core Values</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div class="p-4">
-                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">1</div>
+                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg sm:text-xl$3">1</div>
                     <h3 class="font-bold text-gray-900">Empowerment</h3>
                 </div>
                 <div class="p-4">
-                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">2</div>
+                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg sm:text-xl$3">2</div>
                     <h3 class="font-bold text-gray-900">Integrity</h3>
                 </div>
                 <div class="p-4">
-                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">3</div>
+                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg sm:text-xl$3">3</div>
                     <h3 class="font-bold text-gray-900">Inclusivity</h3>
                 </div>
                 <div class="p-4">
-                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">4</div>
+                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg sm:text-xl$3">4</div>
                     <h3 class="font-bold text-gray-900">Excellence</h3>
                 </div>
             </div>
@@ -70,17 +70,17 @@
                 <!-- Placeholder Profile -->
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                     <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 animate-pulse flex items-center justify-center text-gray-400 text-xs">IMG</div>
-                    <h3 class="font-bold text-lg text-gray-900">Jane Doe</h3>
+                    <h3 class="font-bold text-base sm:text-lg$3">Jane Doe</h3>
                     <p class="text-primary font-medium text-sm">Executive Director</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                     <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 animate-pulse flex items-center justify-center text-gray-400 text-xs">IMG</div>
-                    <h3 class="font-bold text-lg text-gray-900">John Smith</h3>
+                    <h3 class="font-bold text-base sm:text-lg$3">John Smith</h3>
                     <p class="text-primary font-medium text-sm">Head of Programs</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                     <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 animate-pulse flex items-center justify-center text-gray-400 text-xs">IMG</div>
-                    <h3 class="font-bold text-lg text-gray-900">Alice Johnson</h3>
+                    <h3 class="font-bold text-base sm:text-lg$3">Alice Johnson</h3>
                     <p class="text-primary font-medium text-sm">Community Outreach Lead</p>
                 </div>
             </div>
@@ -93,3 +93,4 @@
 $content = ob_get_clean();
 require __DIR__ . '/layouts/main.php';
 ?>
+
