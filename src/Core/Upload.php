@@ -78,6 +78,7 @@ class Upload {
         $destination = $uploadDir . $uniqueName;
 
         if (move_uploaded_file($fileArray['tmp_name'], $destination)) {
+            chmod($destination, 0644); // Ensure the file is readable by the web server
             return 'uploads/' . $uniqueName; // Return path relative to public directory
         }
 
