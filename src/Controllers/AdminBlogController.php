@@ -24,7 +24,7 @@ class AdminBlogController extends AdminBaseController {
             // A better approach is using HTML Purifier, but we'll accept raw for the scope of this project.
             $content = $_POST['content'] ?? ''; 
 
-            if ($title && $content) {
+            if ($title && trim(strip_tags($content))) {
                 Blog::create($title, $content, $status);
                 Session::set('flash_success', 'Blog article created.');
                 header("Location: /admin/blogs");
@@ -53,7 +53,7 @@ class AdminBlogController extends AdminBaseController {
             $status = Security::sanitizeInput($_POST['status'] ?? 'draft');
             $content = $_POST['content'] ?? ''; 
 
-            if ($title && $content) {
+            if ($title && trim(strip_tags($content))) {
                 Blog::update($id, $title, $content, $status);
                 Session::set('flash_success', 'Blog article updated.');
                 header("Location: /admin/blogs");

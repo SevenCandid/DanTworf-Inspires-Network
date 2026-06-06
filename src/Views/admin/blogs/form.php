@@ -6,7 +6,7 @@
 </div>
 
 <div class="bg-white shadow-sm rounded-xl p-6 border border-gray-100">
-    <form action="<?= isset($blog) ? '/admin/blogs/edit?id=' . $blog['id'] : '/admin/blogs/create' ?>" method="POST" class="space-y-6">
+    <form action="<?= isset($blog) ? '/admin/blogs/edit?id=' . $blog['id'] : '/admin/blogs/create' ?>" method="POST" class="space-y-6" onsubmit="return syncContent()">
         <input type="hidden" name="csrf_token" value="<?= \App\Core\Security::generateCsrfToken() ?>">
         
         <div>
@@ -60,9 +60,17 @@
     <?php endif; ?>
 
     // Sync editor content to hidden input on form submit
-    document.querySelector('form').addEventListener('submit', function() {
-        document.getElementById('contentInput').value = quill.root.innerHTML;
-    });
+    function syncContent() {
+        var html = quill.root.innerHTML;
+        // Quill's empty state is '<p><br></p>' — treat that as empty
+        var isEmpty = html === '<p><br></p>' || html.trim() === '';
+        if (isEmpty) {
+            alert('Content is required. Please write something before submitting.');
+            return false;
+        }
+        document.getElementById('contentInput').value = html;
+        return true;
+    }
 </script>
 
 <?php 
