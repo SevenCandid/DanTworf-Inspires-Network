@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Security;
 use App\Core\Session;
 use App\Models\Opportunity;
+use App\Models\Event;
 use App\Models\ContactMessage;
 use App\Models\Member;
 use App\Models\Volunteer;
@@ -14,6 +15,7 @@ use App\Models\Newsletter;
 class HomeController {
     public function index() {
         $opportunities = Opportunity::getLatest(3);
+        $events = Event::getUpcoming(3);
         require_once __DIR__ . '/../Views/home.php';
     }
 
@@ -35,6 +37,7 @@ class HomeController {
     }
 
     public function events() {
+        $events = Event::getAll();
         require_once __DIR__ . '/../Views/events.php';
     }
 

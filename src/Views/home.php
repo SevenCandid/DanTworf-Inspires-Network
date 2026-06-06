@@ -118,26 +118,23 @@
         <div>
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Upcoming Events</h3>
             <div class="space-y-4">
-                <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-100">
-                    <div class="bg-primary text-white p-3 rounded text-center w-16 flex-shrink-0">
-                        <span class="block text-sm font-bold">OCT</span>
-                        <span class="block text-xl font-bold">15</span>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="font-bold text-gray-900">Annual Youth Leadership Summit</h4>
-                        <p class="text-sm text-gray-500">Virtual Event via Zoom</p>
-                    </div>
-                </div>
-                <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-100">
-                    <div class="bg-primary text-white p-3 rounded text-center w-16 flex-shrink-0">
-                        <span class="block text-sm font-bold">NOV</span>
-                        <span class="block text-xl font-bold">02</span>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="font-bold text-gray-900">Scholarship Application Workshop</h4>
-                        <p class="text-sm text-gray-500">DIN Headquarters, Main Hall</p>
-                    </div>
-                </div>
+                <?php if (!empty($events)): ?>
+                    <?php foreach ($events as $event): ?>
+                        <?php $eventDate = strtotime($event['event_date']); ?>
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-100">
+                            <div class="bg-primary text-white p-3 rounded text-center w-16 flex-shrink-0">
+                                <span class="block text-sm font-bold"><?= strtoupper(date('M', $eventDate)) ?></span>
+                                <span class="block text-xl font-bold"><?= date('d', $eventDate) ?></span>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold text-gray-900"><?= htmlspecialchars($event['title']) ?></h4>
+                                <p class="text-sm text-gray-500"><?= htmlspecialchars($event['location'] ?? 'TBD') ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-gray-500 text-sm">No upcoming events right now.</p>
+                <?php endif; ?>
                 <a href="/events" class="inline-block mt-4 text-primary font-bold hover:underline">See all events &rarr;</a>
             </div>
         </div>
